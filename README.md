@@ -1,3 +1,3 @@
 # GameShop
 
-Projet de Developpement Web CY Tech
+Projet de Developpement Web CY-Tech
