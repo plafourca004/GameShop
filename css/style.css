@@ -28,7 +28,26 @@ nav {
 	padding: 2%;
 	border: 0px;
 	float: left;
+	text-align: left;
+	line-height: 3em;
+
+	background-image: url("../img/assets/background_nav.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
+
+.navbar li a
+{
+	text-decoration: none;
+	color: white;
+	font-size: 1.3vw;
+}
+
+.navbar li a:hover{
+	font-size: 1.7vw;
+}
+
 main {
 	background-color: pink;
 	height: 71%;
@@ -37,9 +56,14 @@ main {
 	float: left;
 	border: 0px;
 	text-align: center;
+
+	background-image: url("../img/assets/background_main.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 footer {
-	background-color: yellow;
+	background-color: #ffff99;
 	height: 6%;
 	width: 96%;
 	padding: 2%;
