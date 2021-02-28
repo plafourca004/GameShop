@@ -4,30 +4,54 @@
     <meta charset="UTF-8">
     <title>GAMEshop, Jeux PC</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css"> 
 </head>
 <body>
-    <header>
-        <!--<h1>GAMEshop</h1> -->
-        <img src="img/assets/logo.png" alt="GAMEshop" class="logo"/>
-        
-        <ul class="menu">
-            <li class="menu_item"><a href="index.html">Accueil</a></li>
-            <li class="menu_item"><a href="jeux-ps.html">Playstation</a></li>
-            <li class="menu_item"><a href="jeux-xbox.html">XBox</a></li>
-            <li class="menu_item active"><a href="jeux-pc.html">PC</a></li>
-            <li class="menu_item" id="connexion"><a href="">Connexion</a></li>
-        </ul>
-    </header>
+    <!-- Menu -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 1.5em; padding-left: 6em; padding-right: 6em;">
+                <div style="padding-right: 5em;">
+                    <img src="img/assets/logo.png" alt="GAMEshop" class="logo"/>
+                </div>
 
-    <nav>
-        <ul class="navbar">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="jeux-ps.html">Playstation</a></li>
-            <li><a href="jeux-xbox.html">XBox</a></li>
-            <li><a href="jeux-pc.html">PC</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+                <div class="collapse navbar-collapse fs-4" id="navbarNav" style="padding-top: 1.5em;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="jeux-ps.html">Playstation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="jeux-xbox.html">XBox</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="jeux-pc.html">PC</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" href="#">
+                              <i class="fab bi-cart2"></i> Panier
+                            </a>
+                          </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Menu -->
 
     <main>
         <h2>Liste des jeux PC</h2>
@@ -77,9 +101,20 @@
         </table>
     </main>
 
-    <footer>
-        <p>Copyright rien du tout 2021, Paul Lafourcade; Kilian Pichard</p>
+   <!-- Pied de page -->
+   <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 ">
+        <footer class="text-center text-dark" style="padding: 15px; background-color: #ffff99;">
+
+        <!-- Copyright -->
+            © 2021 Copyright : Paul Lafourcade & Kilian Pichard
+        <!-- Copyright -->
+        
     </footer>
+
+    </div>
+</div>
+<!-- Pied de page -->
 
 </body>
 </html>
