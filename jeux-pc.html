@@ -62,7 +62,7 @@
                 <br />
                 <br />
                 <div class="card-deck">
-                    <div class="card text-center mb-4">
+                    <div class="card text-center mb-4 h-100">
                         <div class="card-header">
                             <img src="img/pc/civ6.jpg" class="card-img-top imgS"
                             alt="Civilization 6 sur PC">
@@ -71,13 +71,17 @@
                             <h5 class="card-title">Civilization VI</h5>
                             <p class="card-text">jpc1</p>
                             <p class="card-text">12€</p>
-                            <button type="button" class="btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-restant" style="visibility:hidden">8 en stock</span>
+                            <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number">8</span> en stock</span>                      
+                            <br/>
+                            <button type="button" class="card-btn btn btn-primary" id="decrement">-</button>
+                            <span id="number-chosen">0</span>
+                            <button type="button" class="card-btn btn btn-primary" id="increment">+</button>    
                         </div>
                         <div class="card-footer">
                             <button type="button" class="btn btn-primary">Ajouter au panier</button>
                         </div>
                     </div>
-                    <div class="card text-center mb-4">
+                    <div class="card text-center mb-4 h-100">
                         <div class="card-header">
                             <img src="img/pc/csgo.jpg" class="card-img-top imgS" 
                             alt="Counter Strike Global Offensive sur PC">
@@ -86,7 +90,11 @@
                             <h5 class="card-title">Counter Strike Global Offensive</h5>
                             <p class="card-text">jpc2</p>
                             <p class="card-text">5€</p>
-                            <button type="button" class="btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-restant" style="visibility:hidden">3 en stock</span>
+                            <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number">3</span> en stock</span>                      
+                            <br/>
+                            <button type="button" class="card-btn btn btn-primary" id="decrement">-</button>
+                            <span id="number-chosen">0</span>
+                            <button type="button" class="card-btn btn btn-primary" id="increment">+</button>    
                         </div>
                         <div class="card-footer">
                             <button type="button" class="btn btn-primary">Ajouter au panier</button>
@@ -95,7 +103,7 @@
                     <div class="w-100 d-none d-sm-block d-md-none">
                         <!-- wrap every 2 on sm-->
                     </div>
-                    <div class="card text-center mb-4">
+                    <div class="card text-center mb-4 h-100">
                         <div class="card-header">
                             <img src="img/pc/fortnite.jpg" class="card-img-top imgS" 
                             alt="Fortnite sur PC">
@@ -104,7 +112,11 @@
                             <h5 class="card-title">Fortnite</h5>
                             <p class="card-text">jpc3</p>
                             <p class="card-text">10€</p>  
-                            <button type="button" class="btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-restant" style="visibility:hidden">12 en stock</span>
+                            <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number">12</span> en stock</span>                      
+                            <br/>
+                            <button type="button" class="card-btn btn btn-primary" id="decrement">-</button>
+                            <span id="number-chosen">0</span>
+                            <button type="button" class="card-btn btn btn-primary" id="increment">+</button>    
                         </div>
                         <div class="card-footer">
                             <button type="button" class="btn btn-primary">Ajouter au panier</button>
@@ -113,7 +125,7 @@
                     <div class="w-100 d-none d-md-block d-lg-none">
                         <!-- wrap every 3 on md-->
                      </div>
-                    <div class="card text-center mb-4">
+                    <div class="card text-center mb-4 h-100">
                         <div class="card-header">
                             <img src="img/pc/minecraft.jpg" class="card-img-top imgS" 
                             alt="Minecraft sur PC">
@@ -122,7 +134,11 @@
                             <h5 class="card-title">Minecraft</h5>
                             <p class="card-text">jpc4</p>
                             <p class="card-text">20€</p>
-                            <button type="button" class="btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-restant" style="visibility:hidden">9 en stock</span>
+                            <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number">9</span> en stock</span>                      
+                            <br/>
+                            <button type="button" class="card-btn btn btn-primary" id="decrement">-</button>
+                            <span id="number-chosen">0</span>
+                            <button type="button" class="card-btn btn btn-primary" id="increment">+</button>    
                         </div>
                         <div class="card-footer">
                             <button type="button" class="btn btn-primary">Ajouter au panier</button>
@@ -134,7 +150,7 @@
                     <div class="w-100 d-none d-lg-block d-xl-none">
                         <!-- wrap every 4 on lg-->
                     </div>
-                    <div class="card text-center mb-4">
+                    <div class="card text-center mb-4 h-100">
                         <div class="card-header">
                             <img src="img/pc/rocketLeague.jpg" class="card-img-top imgS" 
                             alt="Rocket League sur PC">
@@ -143,8 +159,11 @@
                             <h5 class="card-title">Rocket League</h5>
                             <p class="card-text">jpc5</p>
                             <p class="card-text">25€</p>                            
-                            <button type="button" class="btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-restant" style="visibility:hidden">6 en stock</span>
-
+                            <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number">6</span> en stock</span>                      
+                            <br/>
+                            <button type="button" class="card-btn btn btn-primary" id="decrement">-</button>
+                            <span id="number-chosen">0</span>
+                            <button type="button" class="card-btn btn btn-primary" id="increment">+</button>    
                         </div>
                         <div class="card-footer">
                             <button type="button" class="btn btn-primary">Ajouter au panier</button>
