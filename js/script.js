@@ -22,15 +22,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
         
         max = button.parentElement.querySelector("#stock-number")
         current = button.parentElement.querySelector("#number-chosen")
-        if(current.innerHTML < max.innerHTML)
+        if(parseInt(current.innerHTML) < parseInt(max.innerHTML))
         {
+            console.log(current.innerHTML)
+            console.log("wow")
             current.innerHTML++
         }
     }))
 
     decrementers.forEach(button => button.addEventListener('click' , (event) => {
         
-        max = button.parentElement.querySelector("#stock-number")
         current = button.parentElement.querySelector("#number-chosen")
         if(current.innerHTML > 0)
         {
