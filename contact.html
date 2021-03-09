@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>GAMEshop, Contact</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styleKilian.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="js/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 </head>
+
 <body>
     <!-- Menu -->
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 1.5em; padding-left: 6em; padding-right: 6em;">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+                style="padding: 1.5em; padding-left: 6em; padding-right: 6em;">
                 <div style="padding-right: 5em;">
-                    <img src="img/assets/logo.png" alt="GAMEshop" class="logo"/>
+                    <img src="img/assets/logo.png" alt="GAMEshop" class="logo" />
                 </div>
 
                 <div class="collapse navbar-collapse fs-4" id="navbarNav" style="padding-top: 1.5em;">
@@ -34,7 +39,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-                        
+
                     </ul>
 
                     <ul class="navbar-nav ms-auto ">
@@ -43,9 +48,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link waves-effect waves-light" href="#">
-                              <i class="fab bi-cart2"></i> Panier
+                                <i class="fab bi-cart2"></i> Panier
                             </a>
-                          </li>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -57,62 +62,81 @@
         <h2>Contactez nous</h2>
         <br />
 
-
-        <form>
+        <form id="contact">
             <div class="row">
                 <div class="col form-group">
-                    <label for="nomInput">Votre nom</label>
-                    <input type="text" class="form-control" id="nomInput" placeholder="Votre nom">
+                    <label for="nomInput">Votre nom</label><label style="color: #d52d2d;">*</label>
+                    <input type="text" class="form-control" name="nom" id="nomInput" placeholder="Votre nom">
                 </div>
 
                 <div class="col form-group">
-                    <label for="prenomInput">Votre prenom</label>
-                    <input type="text" class="form-control" id="prenomInput" placeholder="Votre prenom">
+                    <label for="prenomInput">Votre prenom</label><label style="color: #d52d2d;">*</label>
+                    <input type="text" class="form-control erreur" name="prenom" id="prenomInput" placeholder="Votre prenom">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="emailInput">Votre email</label>
-                <input type="email" class="form-control" id="prenomInput" placeholder="Votre email">
+            <div class="row">
+                <div class="form-group">
+                    <label for="genreSelect">Votre genre</label><label style="color: #d52d2d;">*</label><br />
+                    <select class="form-control" name="genre" id="genreSelect">
+                        <option value="" selected disabled>Choisissez un genre</option>
+                        <option value="H">Homme</option>
+                        <option value="F">Femme</option>
+                        <option value="F">Autre</option>
+                    </select>
+                </div>
             </div>
 
-            <label for="genreSelect">Votre genre</label><br />
-            <select class="form-control" id="genreSelect">
-                <option value="H">Homme</option>
-                <option value="F">Femme</option>
-                <option value="F">Autre</option>
-            </select><br />
-
-            <label for="metierSelect">Métiers : </label><br />
-            <select class="form-control" id="metierSelect">
-                <option value="Informaticien">Informaticien</option>
-                <option value="Pharmacien">Pharmacien</option>
-                <option value="Boulanger">Boulanger</option>
-            </select><br />
-
-            <div class="form-group">
-                <label for="dateNaissanceInput">Votre date de naissance</label>
-                <input type="date" class="form-control" id="dateNaissanceInput" placeholder="Votre date de naissance">
-            </div>
-            
-            <div class="form-group">
-                <label for="sujetInput">Sujet de la demande</label>
-                <input type="text" class="form-control" id="sujetInput" placeholder="Sujet de la demande">
+            <div class="row">
+                <div class="form-group">
+                    <label for="emailInput" >Votre email</label><label style="color: #d52d2d;">*</label>
+                    <input type="email" class="form-control" name="mail" id="mailInput" placeholder="Votre email" >
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="demandeTextarea">Expliquez : </label>
-                <textarea class="form-control" id="demandeTextarea" rows="5"></textarea><br />
+            <div class="row">
+                <div class="form-group">
+                    <label for="metierSelect">Métiers : </label><label style="color: #d52d2d;">*</label><br />
+                    <select class="form-control" name="metier" id="metierSelect">
+                        <option value="" selected disabled>Choisissez un métier</option>
+                        <option value="Informaticien">Informaticien</option>
+                        <option value="Pharmacien">Pharmacien</option>
+                        <option value="Boulanger">Boulanger</option>
+                    </select>
+                </div>
             </div>
-            
-            <input type="submit" class="btn btn-primary mb-2" value="Envoyer" />
 
-            <br />
+            <div class="row">
+                <div class="form-group">
+                    <label for="dateNaissanceInput">Votre date de naissance</label><label style="color: #d52d2d;">*</label>
+                    <input type="date" class="form-control" name="dateNaiss" id="dateNaissInput"
+                        placeholder="Votre date de naissance">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="sujetInput">Sujet de la demande</label><label style="color: #d52d2d;">*</label>
+                    <input type="text" class="form-control" name="sujet" id="sujetInput" placeholder="Sujet de la demande">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="demandeTextarea">Expliquez : </label><label style="color: #d52d2d;">*</label>
+                    <textarea class="form-control" name="message" id="messageInput" rows="5"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <input type="submit" name="btnContact" class="btn btn-primary mb-2" value="Envoyer" id="btnContact" />
+                </div>
+            </div>
+
             <br />
 
         </form>
-
-
     </main>
 
     <!-- Pied de page -->
@@ -120,15 +144,16 @@
         <div class="col-md-12 col-sm-12 col-xs-12 ">
             <footer class="text-center text-dark" style="padding: 15px; background-color: #ffff99;">
 
-            <!-- Copyright -->
+                <!-- Copyright -->
                 © 2021 Copyright : Paul Lafourcade & Kilian Pichard
-            <!-- Copyright -->
-            
-        </footer>
+                <!-- Copyright -->
+
+            </footer>
 
         </div>
     </div>
     <!-- Pied de page -->
 
 </body>
+
 </html>

@@ -12,3 +12,6 @@
 .card-title{
     height: 3em;
 }
+.erreur{
+    border-color: red;
+}
