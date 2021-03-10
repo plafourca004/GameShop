@@ -1,3 +1,8 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .logo{
 	height: 5.5em;
 	margin: 20px;
@@ -11,6 +16,9 @@ main {
 	margin: 1em 0 1.5em 0;
 }
 
+.img-front {
+	width: 60vw;
+}
 
 .card-body button {
 	padding-top: 0.1em; 
@@ -20,3 +28,30 @@ main {
 .card-btn {
 	margin: 0.5em 0 0.5em 0;
 }
+
+.block_right {
+	margin-left : 15em;
+}
+
+.nav-item
+{
+	font-size: 1.5vw;
+}
+
+@media all and (max-width: 1000px) {
+	#navbarNav {
+		display: flex;
+		font-size: 10px;
+	}
+
+	.nav-item {
+		padding: auto;
+		margin: auto;
+	}
+
+	.logo {
+		height: 3em;
+		margin: 1em;
+	}
+}
+
