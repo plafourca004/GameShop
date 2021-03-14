@@ -59,3 +59,21 @@ main {
 {
 	color: rgb(187, 0, 0);
 }
+
+.card{
+    height: 36.5em;
+    width: 18em;
+    float: left;
+    margin-right: 2em;
+    margin-left: 2em;
+    margin-top: 2em;
+}
+.imgS{
+    height: 19em;
+}
+.card-title{
+    height: 3em;
+}
+.erreur{
+    border-color: red;
+}
