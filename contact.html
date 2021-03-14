@@ -65,32 +65,36 @@
         <form id="contact">
             <div class="row">
                 <div class="col form-group">
-                    <label for="nomInput">Votre nom</label><label style="color: #d52d2d;">*</label>
+                    <label for="nomInput">Nom</label><label style="color: #d52d2d;">*</label>
                     <input type="text" class="form-control" name="nom" id="nomInput" placeholder="Votre nom">
+                    <label id="labelNom"></label>
                 </div>
 
                 <div class="col form-group">
-                    <label for="prenomInput">Votre prenom</label><label style="color: #d52d2d;">*</label>
+                    <label for="prenomInput">Prénom</label><label style="color: #d52d2d;">*</label>
                     <input type="text" class="form-control erreur" name="prenom" id="prenomInput" placeholder="Votre prenom">
+                    <label id="labelPrenom"></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group">
-                    <label for="genreSelect">Votre genre</label><label style="color: #d52d2d;">*</label><br />
+                    <label for="genreSelect">Genre</label><label style="color: #d52d2d;">*</label><br />
                     <select class="form-control" name="genre" id="genreSelect">
                         <option value="" selected disabled>Choisissez un genre</option>
                         <option value="H">Homme</option>
                         <option value="F">Femme</option>
                         <option value="F">Autre</option>
                     </select>
+                    <label id="labelGenre"></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group">
-                    <label for="emailInput" >Votre email</label><label style="color: #d52d2d;">*</label>
-                    <input type="email" class="form-control" name="mail" id="mailInput" placeholder="Votre email" >
+                    <label for="emailInput" >Adresse mail</label><label style="color: #d52d2d;">*</label>
+                    <input type="text" class="form-control" name="mail" id="mailInput" placeholder="Votre email" >
+                    <label id="labelMail"></label>
                 </div>
             </div>
 
@@ -103,14 +107,16 @@
                         <option value="Pharmacien">Pharmacien</option>
                         <option value="Boulanger">Boulanger</option>
                     </select>
+                    <label id="labelMetier"></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group">
-                    <label for="dateNaissanceInput">Votre date de naissance</label><label style="color: #d52d2d;">*</label>
+                    <label for="dateNaissanceInput">Date de naissance</label><label style="color: #d52d2d;">*</label>
                     <input type="date" class="form-control" name="dateNaiss" id="dateNaissInput"
                         placeholder="Votre date de naissance">
+                    <label id="labelDateNaiss"></label>
                 </div>
             </div>
 
@@ -118,6 +124,7 @@
                 <div class="form-group">
                     <label for="sujetInput">Sujet de la demande</label><label style="color: #d52d2d;">*</label>
                     <input type="text" class="form-control" name="sujet" id="sujetInput" placeholder="Sujet de la demande">
+                    <label id="labelSujet"></label>
                 </div>
             </div>
 
@@ -125,12 +132,14 @@
                 <div class="form-group">
                     <label for="demandeTextarea">Expliquez : </label><label style="color: #d52d2d;">*</label>
                     <textarea class="form-control" name="message" id="messageInput" rows="5"></textarea>
+                    <label id="labelMessage"></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group">
                     <input type="submit" name="btnContact" class="btn btn-primary mb-2" value="Envoyer" id="btnContact" />
+                    <label id="labelBtn"></label>
                 </div>
             </div>
 

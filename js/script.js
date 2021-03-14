@@ -48,22 +48,26 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     //Vérification du formulaire
     let clickButton = document.querySelector("#btnContact")
-    let formulmaire = document.getElementById("contact")
+    let formulaire = document.getElementById("contact")
 
     let tabNomElements = new Array("nom", "prenom", "genre", "mail", "metier", "dateNaiss", "sujet", "message")
     let tabElements = new Array()
     for (let index = 0; index < tabNomElements.length; index++) {
 
-        tabElements.push(formulmaire.elements[tabNomElements[index]])
+        tabElements.push(formulaire.elements[tabNomElements[index]])
     }
 
     let tabTexteMissing = new Array("Veuillez mettre un nom", "Veuillez mettre un prenom", "Veuillez choisir un genre", "Veuillez mettre une adresse mail", "Veuillez choisir un métier", "Veuillez mettre une une date de naissance", "Veuillez mettre un sujet", "Veuillez mettre un message")
-    let tabRegex = new Array(/[A-Za-z]/, /a/, /a/, /a/, /a/, /a/, /a/, /a/)
+    let tabRegex = new Array(/[A-Za-z]/, /[A-Za-z]/, "", /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+    let tabLabelError = new Array("labelNom", "labelPrenom", "labelGenre", "labelMail", "labelMetier", "labelDateNaiss", "labelSujet", "labelMessage")
+    let tabExemple = new Array("Exemple : Dupont", "Exemple : Pierre", "", "Exemple : pierre.dupont@exemple.fr", "", "Format : jj/mm/aaaa", "", "")
 
     let element = {
         cle: tabElements,
         texteMissing: tabTexteMissing,
-        regex: tabRegex
+        regex: tabRegex,
+        labelError: tabLabelError,
+        exemple: tabExemple
     }
 
     let formulaireValide = true
@@ -74,29 +78,36 @@ document.addEventListener("DOMContentLoaded", (e) => {
             //Si le champs est vide, on passe formulaire vide en false et on informe l'utilisateur
             if (element.cle[index].value == "") {
                 formulaireValide = false
-                let newLabel = document.createElement('label')
-                parent = element.cle[index].parentElement
                 element.cle[index].style.borderColor = "#d52d2d"
-                newLabel.textContent = element.texteMissing[index]
-                newLabel.style.color = "#d52d2d"
-                parent.append(newLabel)
+                let label = document.getElementById(element.labelError[index])
+                label.innerHTML = element.texteMissing[index]
+                label.style.color = "#d52d2d"
             }
-
-            //Si le champs n'est pas juste, on passe formulaire vide en false et on informe l'utilisateur
-            if (element.cle[index].value != element.regex[index]) {
-                console.log(element.cle[index].value + " != " + element.regex[index])
-            }
+            else {
+                
+                if ((element.cle[index].name == "nom") || (element.cle[index].name == "prenom") || (element.cle[index].name == "mail")) {
+                    //Si le champs n'est pas juste, on passe formulaire vide en false et on informe l'utilisateur
+                    if (!element.cle[index].value.match(element.regex[index])) {
+                        formulaireValide = false
+                        element.cle[index].style.borderColor = "#d52d2d"
+                        let label = document.getElementById(element.labelError[index])
+                        label.innerHTML = element.exemple[index]
+                        label.style.color = "#d52d2d"
+                    }
+                }
+                else {
+                    let label = document.getElementById(element.labelError[index])
+                    label.innerHTML = ""
+                }
+            }           
         }
 
         //Si le formulaire n'est pas valide on n'envoie pas les données et on affiche un message
         if (!formulaireValide) {
             event.preventDefault()
-            let newLabel = document.createElement('label')
-            let btn = formulmaire.elements["btnContact"]
-            parent = btn.parentElement
-            newLabel.textContent = "Au moins un des champs n'est pas correct"
-            newLabel.style.color = "#d52d2d"
-            parent.append(newLabel)
+            let label = document.getElementById("labelBtn")
+            label.innerHTML = "Au moins un des champs n'est pas correct"
+            label.style.color = "#d52d2d"
         }
     })
 })
