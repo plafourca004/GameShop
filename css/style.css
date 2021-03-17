@@ -4,7 +4,7 @@ html, body {
 }
 
 .logo{
-	height: 5.5em;
+	height: 3.5em;
 	margin: 20px;
 }
 
@@ -35,24 +35,7 @@ main {
 
 .nav-item
 {
-	font-size: 1.5vw;
-}
-
-@media all and (max-width: 1000px) {
-	#navbarNav {
-		display: flex;
-		font-size: 10px;
-	}
-
-	.nav-item {
-		padding: auto;
-		margin: auto;
-	}
-
-	.logo {
-		height: 3em;
-		margin: 1em;
-	}
+	font-size: 1.2em;
 }
 
 .important
