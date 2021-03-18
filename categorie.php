@@ -29,19 +29,7 @@
 
                             $category = htmlspecialchars($_GET['cat']);
 
-                            function string_in_array($string, array $array)
-                            {
-                                foreach($array as $item)
-                                {
-                                    if(strcmp($item, $string) == 0)
-                                    {
-                                        return true;
-                                    }
-                                }
-                                return false;
-                            }
-
-                            if(string_in_array($category, $_SESSION["categories"]))
+                            if(in_array($category, $_SESSION["categories"]))
                             {
                                 foreach($_SESSION[$category] as $jeu)
                                 {
