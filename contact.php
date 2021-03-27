@@ -73,13 +73,13 @@
                         <div class="row">
                             <div class="col form-group">
                                 <label for="nomInput">Nom</label><label style="color: #d52d2d;">*</label>
-                                <input type="text" class="form-control <?= (in_array("nom", $errorList)) ? "is-invalid" : "is-valid" ?>" name="nom" id="nomInput" placeholder="Votre nom" value="<?= (isset($_POST["nom"])) ? htmlspecialchars($_POST["nom"]) : "" ?>" />
+                                <input type="text" class="form-control <?= (in_array("nom", $errorList)) ? "is-invalid" : "" ?>" name="nom" id="nomInput" placeholder="Votre nom" value="<?= (isset($_POST["nom"])) ? htmlspecialchars($_POST["nom"]) : "" ?>" />
                                 <label id="labelNom" class="important"><?= (in_array("nom", $errorList)) ? "Merci de renseigner un nom valable" : "" ?></label>
                             </div>
 
                             <div class="col form-group">
                                 <label for="prenomInput">Prénom</label><label style="color: #d52d2d;">*</label>
-                                <input type="text" class="form-control <?= (in_array("prenom", $errorList)) ? "is-invalid" : "is-valid" ?>" name="prenom" id="prenomInput" placeholder="Votre prenom" value="<?= (isset($_POST["prenom"])) ? htmlspecialchars($_POST["prenom"]) : "" ?>" />
+                                <input type="text" class="form-control <?= (in_array("prenom", $errorList)) ? "is-invalid" : "" ?>" name="prenom" id="prenomInput" placeholder="Votre prenom" value="<?= (isset($_POST["prenom"])) ? htmlspecialchars($_POST["prenom"]) : "" ?>" />
                                 <label id="labelPrenom" class="important"><?= (in_array("prenom", $errorList)) ? "Merci de renseigner un prenom valable" : "" ?></label>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="genreSelect">Genre</label><label style="color: #d52d2d;">*</label><br />
-                                <select class="form-control <?= (in_array("genre", $errorList)) ? "is-invalid" : "is-valid" ?>" name="genre" id="genreSelect">
+                                <select class="form-control <?= (in_array("genre", $errorList)) ? "is-invalid" : "" ?>" name="genre" id="genreSelect">
                                     <option value="" selected disabled>Choisissez un genre</option>
                                     <option value="H" <?= (isset($_POST["genre"]) && $_POST["genre"] == "H") ? "selected" : "" ?> >Homme</option>
                                     <option value="F" <?= (isset($_POST["genre"]) && $_POST["genre"] == "F") ? "selected" : "" ?> >Femme</option>
@@ -100,7 +100,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="emailInput" >Adresse mail</label><label style="color: #d52d2d;">*</label>
-                                <input type="text" class="form-control <?= (in_array("mail", $errorList)) ? "is-invalid" : "is-valid" ?>" name="mail" id="mailInput" placeholder="Votre email" value="<?= (isset($_POST["mail"])) ? htmlspecialchars($_POST["mail"]) : "" ?>"/>
+                                <input type="text" class="form-control <?= (in_array("mail", $errorList)) ? "is-invalid" : "" ?>" name="mail" id="mailInput" placeholder="Votre email" value="<?= (isset($_POST["mail"])) ? htmlspecialchars($_POST["mail"]) : "" ?>"/>
                                 <label id="labelMail" class="important"><?= (in_array("mail", $errorList)) ? "Merci de renseigner un mail valable" : "" ?></label>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="metierSelect">Métiers : </label><label style="color: #d52d2d;">*</label><br />
-                                <select class="form-control <?= (in_array("metier", $errorList)) ? "is-invalid" : "is-valid" ?>" name="metier" id="metierSelect">
+                                <select class="form-control <?= (in_array("metier", $errorList)) ? "is-invalid" : "" ?>" name="metier" id="metierSelect">
                                     <option value="" selected disabled>Choisissez un métier</option>
                                     <option value="Informaticien" <?= (isset($_POST["metier"]) && $_POST["metier"] == "Informaticien") ? "selected" : "" ?> >Informaticien</option>
                                     <option value="Pharmacien" <?= (isset($_POST["metier"]) && $_POST["metier"] == "Pharmacien") ? "selected" : "" ?> >Pharmacien</option>
@@ -121,7 +121,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="dateNaissanceInput">Date de naissance</label><label style="color: #d52d2d;">*</label>
-                                <input type="date" class="form-control <?= (in_array("dateNaiss", $errorList)) ? "is-invalid" : "is-valid" ?>" name="dateNaiss" id="dateNaissInput"
+                                <input type="date" class="form-control <?= (in_array("dateNaiss", $errorList)) ? "is-invalid" : "" ?>" name="dateNaiss" id="dateNaissInput"
                                     placeholder="Votre date de naissance" value="<?= (isset($_POST["dateNaiss"])) ? htmlspecialchars($_POST["dateNaiss"]) : "" ?>"/>
                                 <label id="labelDateNaiss" class="important"><?= (in_array("dateNaiss", $errorList)) ? "Merci de renseigner une date de naissance valable" : "" ?></label>
                             </div>
@@ -130,7 +130,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="sujetInput">Sujet de la demande</label><label style="color: #d52d2d;">*</label>
-                                <input type="text" class="form-control <?= (in_array("sujet", $errorList)) ? "is-invalid" : "is-valid" ?>" name="sujet" id="sujetInput" placeholder="Sujet de la demande" value="<?= (isset($_POST["sujet"])) ? htmlspecialchars($_POST["sujet"]) : "" ?>" />
+                                <input type="text" class="form-control <?= (in_array("sujet", $errorList)) ? "is-invalid" : "" ?>" name="sujet" id="sujetInput" placeholder="Sujet de la demande" value="<?= (isset($_POST["sujet"])) ? htmlspecialchars($_POST["sujet"]) : "" ?>" />
                                 <label id="labelSujet" class="important"><?= (in_array("sujet", $errorList)) ? "Merci de renseigner un sujet valable" : "" ?></label>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="demandeTextarea">Expliquez : </label><label style="color: #d52d2d;">*</label>
-                                <textarea class="form-control <?= (in_array("message", $errorList)) ? "is-invalid" : "is-valid" ?>" name="message" id="messageInput" rows="5"><?= (isset($_POST["message"])) ? htmlspecialchars($_POST["message"]) : "" ?></textarea>
+                                <textarea class="form-control <?= (in_array("message", $errorList)) ? "is-invalid" : "" ?>" name="message" id="messageInput" rows="5"><?= (isset($_POST["message"])) ? htmlspecialchars($_POST["message"]) : "" ?></textarea>
                                 <label id="labelMessage" class="important"><?= (in_array("message", $errorList)) ? "Merci de renseigner un message valable" : "" ?></label>
                             </div>
                         </div>
