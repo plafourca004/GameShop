@@ -22,7 +22,8 @@
 
 
                         <?php
-                        session_start();
+                        
+                        //session_start();
                         require("varSession.inc.php");
 
                         foreach($_SESSION["categories"] as $cat)
@@ -31,7 +32,7 @@
                             echo '<a class="nav-link" href="categorie.php?cat='.$cat.'">'.$cat.'</a>';
                             echo '</li>';
                         }
-
+                        
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">Contact</a>
