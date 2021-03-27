@@ -23,10 +23,12 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <main>
+                    <?= ((isset($_GET["erreur"])) && $_GET["erreur"] == "true") ? "<h2 class='important'>Vous avez mal renseigné au moins un champ</h2>" : "" ?>
+
                     <h2>Contactez nous</h2>
                     <br />
 
-                    <form action="" id="contact" method="post">
+                    <form action="traitementForm.php" id="contact" method="post">
                         <div class="row">
                             <div class="col form-group">
                                 <label for="nomInput">Nom</label><label style="color: #d52d2d;">*</label>
@@ -106,33 +108,6 @@
                                 <label id="labelBtn"></label>
                             </div>
                         </div>
-                        <?php
-                            //echo "<script>console.log('".$_POST."');</script>";
-                            if(isset($_POST['btnContact'])){
-                            //if(!empty($_POST)){
-                               // echo "<script>console.log('Salut');</script>";
-                                //echo "<script>console.log('".$_POST['message']."');</script>";
-                                
-
-                                foreach ($_POST as $key=>$value) {
-                                    //echo "<script>console.log('".$key." : ".$value."');</script>";
-                                    //echo "<script>console.log('".$value."');</script>";
-                                    if (empty($value)) {
-                                        if (strcmp($key, "dateNaiss") == 0) {
-                                            $errors[$key] = "La date de naissance ne peut être vide.";
-                                        }
-                                        else {
-                                            $errors[$key] = "Le ".$key. " ne peut être vide.";
-                                        }
-                                        echo "<script>console.log('".$errors[$key]."');</script>";
-
-                                        
-
-                                    }
-                                }
-
-                            }
-                        ?>
 
                         <br />
                     </form>

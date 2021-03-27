@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
     let clickButton = document.querySelector("#btnContact")
     let formulaire = document.getElementById("contact")
 
+    //On désactive le submit automatique lors du cliquage sur le bouton pour s'en occuper nous même
+    formulaire.addEventListener('submit', (event) => {
+        event.preventDefault();
+    });
+
+
     let tabNomElements = new Array("nom", "prenom", "genre", "mail", "metier", "dateNaiss", "sujet", "message")
     let tabElements = new Array()
     for (let index = 0; index < tabNomElements.length; index++) {
@@ -22,10 +28,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
         labelError: tabLabelError,
         exemple: tabExemple
     }
-
-    let formulaireValide = true
     clickButton.addEventListener("click", (event) => {
         
+
+        let formulaireValide = true
         for (let index = 0; index < element.cle.length; index++) {
 
             let label = document.getElementById(element.labelError[index])
@@ -60,13 +66,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
         //Si le formulaire n'est pas valide on n'envoie pas les données et on affiche un message
         
         let label = document.getElementById("labelBtn")
-        
+
         if (!formulaireValide) {
-            event.preventDefault()
             label.innerHTML = "Au moins un des champs n'est pas correct"
             label.style.color = "#d52d2d"
         }
         else {
+            formulaire.submit()
             label.innerHTML = ""
         }
     })
