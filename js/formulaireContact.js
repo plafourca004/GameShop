@@ -41,14 +41,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
                 formulaireValide = false
                 element.cle[index].style.borderColor = "#d52d2d"
                 label.innerHTML = element.texteMissing[index]
-                label.style.color = "#d52d2d"
             }
             else {
                 
 
                 element.cle[index].style.borderColor = "#000000"
                 label.innerHTML = ""
-                label.style.color = "#000000"
 
                 if ((element.cle[index].name == "nom") || (element.cle[index].name == "prenom") || (element.cle[index].name == "mail")) {
                     //Si le champs n'est pas juste, on passe formulaire vide en false et on informe l'utilisateur
@@ -57,7 +55,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
                         element.cle[index].style.borderColor = "#d52d2d"
                         let label = document.getElementById(element.labelError[index])
                         label.innerHTML = element.exemple[index]
-                        label.style.color = "#d52d2d"
                     }
                 }
             }           
@@ -69,7 +66,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
         if (!formulaireValide) {
             label.innerHTML = "Au moins un des champs n'est pas correct"
-            label.style.color = "#d52d2d"
         }
         else {
             formulaire.submit()
