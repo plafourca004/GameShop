@@ -28,13 +28,13 @@
                     <br />
 
                     <?php
+                    $errorList = array();
                     if(isset($_POST["btnContact"]))
                     {
                         
                         $allFormInputs = array("nom","prenom","genre","mail","metier","dateNaiss","sujet","message","btnContact");
 
                         $isFormValid = true;
-                        $errorList = array();
 
                         //inputsNonRemplis = tableauComposéDesValeursDifferentesEntre($allFormInputs, TableauComposeDesClefsDe(TableauSansLesValeursNulles($_POST)))
                         $inputsNonRemplis = array_diff($allFormInputs,array_keys(array_filter($_POST)));
