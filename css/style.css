@@ -61,3 +61,9 @@ main {
     border-color: red;
     
 }
+
+.basket-img
+{
+    height: 8em;
+    width: auto;
+}

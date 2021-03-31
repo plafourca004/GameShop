@@ -20,10 +20,6 @@ $_SESSION["logged_in"];
 
 $_SESSION["username"];
 
-$_SESSION["basket"] = Array();
-
-
-
-
+$_SESSION["basket"];
 
 ?>

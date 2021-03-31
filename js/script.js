@@ -21,10 +21,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
         max = button.parentElement.querySelector("#stock-number")
         current = button.parentElement.querySelector("#number-chosen")
+        nbInput = button.parentElement.parentElement.querySelector(".inputNb");
         relativeDecrementer = button.parentElement.querySelector('#decrement')
         relativeDecrementer.disabled = false
         if (parseInt(current.innerHTML) < parseInt(max.innerHTML)) {
             current.innerHTML++
+            nbInput.value = current.innerHTML;
             if(parseInt(current.innerHTML) == parseInt(max.innerHTML))
             {
                 relativeDecrementer.disabled = false
@@ -36,11 +38,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
     decrementers.forEach(button => button.addEventListener('click', (event) => {
 
         current = button.parentElement.querySelector("#number-chosen")
+        nbInput = button.parentElement.parentElement.querySelector(".inputNb");
         relativeIncrementer = button.parentElement.querySelector('#increment')
         relativeIncrementer.disabled = false
-        if (current.innerHTML > 0) {
+        if (current.innerHTML > 1) {
             current.innerHTML--
-            if(parseInt(current.innerHTML) == 0)
+            nbInput.value = current.innerHTML;
+            if(parseInt(current.innerHTML) == 1)
             {
                 relativeIncrementer.disabled = false
                 button.disabled = true
@@ -60,12 +64,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
         w.document.close()
     }))
     
-    /*
-    let loginButton = document.querySelector("#loginBtn");
-    loginButton.addEventListener("click", (event) => {
-        console.log("Salut toi")
-        
-    })*/
 
     
 })

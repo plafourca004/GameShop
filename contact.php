@@ -21,7 +21,7 @@ session_start();
     <div class="container-fluid p-0">
         <!-- Header -->
         <?php
-            include("header.php");
+            include("php/header.php");
         ?>
         <!-- Header -->
 
@@ -165,7 +165,7 @@ session_start();
 
         <!-- Header -->
         <?php
-            include("footer.php");
+            include("php/footer.php");
         ?>
         <!-- Header -->
     </div>

@@ -17,10 +17,39 @@ session_start();
     <div class="container-fluid p-0">
          <!-- Header -->
          <?php
-            require("varSession.inc.php");
-            include("header.php");
-        ?>
-        <!-- Header -->
+            
+            require("php/varSession.inc.php");
+
+            if(isset($_POST["nom"]))
+            {
+                $index = -1;
+                foreach($_SESSION["basket"] as $key => $jeu)
+                {
+                    if($jeu["id"] == $_POST["id"])
+                    {
+                        echo '<script>console.log("wow")</script>';
+                        $index = $key;
+                        break;
+                    } 
+                }
+                if($index == -1)
+                {
+                    array_push($_SESSION["basket"], $_POST);
+                }
+                else
+                {
+                    $_SESSION["basket"][$index]["nb"] += $_POST["nb"];
+                }
+            }
+
+
+            include("php/header.php");
+
+        ?>  
+
+
+
+
 
         <!-- Contenu -->
         <div class="row text-center" style="height: fit-content;">
@@ -36,27 +65,41 @@ session_start();
 
                             if(in_array($category, $_SESSION["categories"]))
                             {
+                                //affichage des jeu
                                 foreach($_SESSION[$category] as $jeu)
-                                {
-                                    echo'<div class="card text-center mb-4 h-100">';
-                                    echo'<div class="card-header">';
-                                    echo'<img src="'.$jeu['imageURL'].'" class="card-img-top imgS" alt="'.$jeu["nom"].'" id="jpc5">';
-                                    echo'</div>';
-                                    echo'<div class="card-body">';
-                                    echo'<h5 class="card-title">'.$jeu["nom"].'</h5>';
-                                    echo'<p class="card-text">'.$jeu["id"].'</p>';
-                                    echo'<p class="card-text">'.$jeu["prix"].'€</p>';
-                                    echo'<button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number">'.$jeu["stock"].'</span> en stock</span>';            
-                                    echo'<br/>';
-                                    echo'<button type="button" class="card-btn btn btn-primary" id="decrement" disabled="true">-</button>';
-                                    echo'<span id="number-chosen">0</span>';
-                                    echo'<button type="button" class="card-btn btn btn-primary" id="increment">+</button>';    
-                                    echo'</div>';
-                                    echo'<div class="card-footer">';
-                                    echo'<button type="button" class="btn btn-primary">Ajouter au panier</button>';
-                                    echo'</div>';
-                                    echo'</div>';
-                                }
+                                { ?>
+                                    <div class="card text-center mb-4 h-100">
+                                        <div class="card-header">
+                                            <img src="<?= $jeu['imageURL'] ?>" class="card-img-top imgS" alt="<?= $jeu["nom"]?>" id="jpc5">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $jeu["nom"] ?></h5>
+                                            <p class="card-text"><?= $jeu["id"] ?></p>
+                                            <p class="card-text"><?= $jeu["prix"] ?>€</p>
+                                            <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number"><?= $jeu["stock"] ?></span> en stock</span>         
+                                            <br/>
+                                            <button type="button" class="card-btn btn btn-primary" id="decrement" disabled="true">-</button>
+                                            <span id="number-chosen">1</span>
+                                            <button type="button" class="card-btn btn btn-primary" id="increment">+</button>
+                                        </div>
+                                        <div class="card-footer">
+                                            <form action="categorie.php?cat=<?= $category ?>" method="post">
+                                                <?php
+                                                foreach($jeu as $key => $value)
+                                                {
+                                                    echo '<input type="hidden" name="'.$key.'" value="'.$value.'" />';
+                                                }
+                                                echo '<input type="hidden" name="plateforme" value="'.$category.'" />';
+                                                echo '<input type="hidden" name="nb" class="inputNb" value="1" />';
+                                                ?>
+                                                
+                                                <input type="submit" class="btn btn-primary" value="Ajouter au panier" />
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                <?php
+                                 }
                             }
                             else
                             {
@@ -78,7 +121,7 @@ session_start();
 
         <!-- Footer -->
         <?php
-            include("footer.php");
+            include("php/footer.php");
         ?>
         <!-- Footer -->
     </div>

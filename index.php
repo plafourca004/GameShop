@@ -22,7 +22,7 @@ session_start();
 
         <!-- Header -->
         <?php
-            include("header.php");
+            include("php/header.php");
         ?>
         <!-- Header -->
 
@@ -46,7 +46,7 @@ session_start();
 
         <!-- Footer -->
         <?php
-            include("footer.php");
+            include("php/footer.php");
         ?> 
         <!-- Footer -->
     </div>

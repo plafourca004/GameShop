@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once("varSession.inc.php");
+    require_once("php/varSession.inc.php");
 
     if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
         //echo'<script>window.location = "index.php"</script>';
@@ -38,25 +38,9 @@
                     header("location: index.php");
                     exit;
                 }
-                //Debug mot de passe
-                else {
-                    echo "<script>console.log('Mauvais mot de passe')</script>";
-                }
-            } 
-            //Debug nom d'utilisateur
-            else {
-                echo "<script>console.log('Mauvais nom d'utilisateur')</script>";
             }
         }
-        //Debug champs vides
-        else {
-            echo "<script>console.log('Username or password empty')</script>";
-        }
     }  
-    //Debug total
-    else {
-        echo "<script>console.log('FAUX')</script>";
-    }
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +52,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <!--<script src="js/script.js"></script>-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </head>
@@ -78,7 +61,7 @@
 
 
         <!-- Contenu -->
-        <div class="row bg-dark" style="height: 50em;">
+        <div class="row bg-dark" style="height: 95vh;">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <main style="color: white; width: 40vw; ">
                     <a href="index.php" ><img src="img/assets/logo.png" alt="GAMEshop" class="logo"/></a>
@@ -98,7 +81,7 @@
                         <div class="row">
                             <div class="col form-group">
                                 <label for="nomInput">Mot de passe</label>
-                                <input type="text" class="form-control <?= ($erreurForm) ? "is-invalid" : "" ?>" name="password" id="passwordInput"/>
+                                <input type="password" class="form-control <?= ($erreurForm) ? "is-invalid" : "" ?>" name="password" id="passwordInput"/>
                             </div>
                         </div>
 
@@ -118,7 +101,7 @@
 
         <!-- Footer -->
         <?php
-            include("footer.php");
+            include("php/footer.php");
         ?>
         <!-- Footer -->
     </div>

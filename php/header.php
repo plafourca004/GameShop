@@ -19,7 +19,7 @@
 
 
                         <?php
-                        require_once("varSession.inc.php");
+                        require_once("php/varSession.inc.php");
 
                         foreach($_SESSION["categories"] as $cat)
                         {
@@ -49,7 +49,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="basket.php">
-                                <i class="fab bi-cart2"></i> Panier
+                                <i class="fab bi-cart2"></i> Panier <?= (isset($_SESSION["basket"]) ? array_sum(array_column($_SESSION["basket"], "nb")) : "") ?>
                             </a>
                         </li>
                     </ul>
