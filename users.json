@@ -1,0 +1,18 @@
+{
+    "users" : 
+    [
+        {
+            "login" : "nomUtilisateur",
+            "password" : "motDePasse"
+        },
+        {
+            "login" : "nomUtilisateur2",
+            "password" : "motDePasse2"
+        },
+        {
+            "login" : "nomUtilisateur3",
+            "password" : "motDePasse3"
+        }
+    ]
+
+}

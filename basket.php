@@ -29,16 +29,16 @@ session_start();
         <!-- Contenu -->
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <main class="text-center">
-                    <h3>Bienvenue sur GAMEshop</h3>
-                    <p>Vous trouverez ici tous les jeux que vous désirez !</p></br>
-                    <p class="important">Attention, suite à la pandémie de COVID-19, les délais de livraison peuvent
-                        être rallongés. Mais ne vous inquiétez pas, votre commande arrive.</p></br>
-                    <img src="img/actu/xbox_series_x.jpg" alt="Nouvelle Xbox Series X" class="img-front" /></br></br>
-                    <strong>
-                        <p>La nouvelle Xbox Series X est dès à présent disponible chez GAMEshop</p>
-                        <p>Ne vous ruez pas dessus, il y en aura pour tout le monde.</p>
-                    </strong>
+                <main>
+                    <?php
+                        if (empty($_SESSION['basket'])) {
+                            echo "<h3>Votre panier est vide</h3>";
+                        }
+                        else {
+                            
+                        }
+                    ?>
+                    
                 </main>
             </div>
         </div>

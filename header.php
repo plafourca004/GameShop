@@ -1,6 +1,3 @@
-
-
-
 <!-- Menu -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -22,9 +19,7 @@
 
 
                         <?php
-                        
-                        //session_start();
-                        require("varSession.inc.php");
+                        require_once("varSession.inc.php");
 
                         foreach($_SESSION["categories"] as $cat)
                         {
@@ -40,10 +35,10 @@
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Connexion</a>
+                            <a class="nav-link" href="<?= ($_SESSION["logged_in"]) ? "logout.php" : "login.php" ?>" id="loginBtn"><?= ($_SESSION["logged_in"]) ? "Déconnexion" : "Connexion" ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="basket.php">
                                 <i class="fab bi-cart2"></i> Panier
                             </a>
                         </li>

@@ -1,3 +1,8 @@
+<?php
+// Initialize the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,11 +76,11 @@
         </div>
         <!-- Contenu -->
 
-        <!-- Header -->
+        <!-- Footer -->
         <?php
             include("footer.php");
         ?>
-        <!-- Header -->
+        <!-- Footer -->
     </div>
 
 </body>

@@ -59,6 +59,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
         w.document.write("</BODY></HTML>")
         w.document.close()
     }))
+    
+    /*
+    let loginButton = document.querySelector("#loginBtn");
+    loginButton.addEventListener("click", (event) => {
+        console.log("Salut toi")
+        
+    })*/
 
     
 })

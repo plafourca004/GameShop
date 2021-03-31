@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", (e) => {
     //Vérification du formulaire
-    let clickButton = document.querySelector("#btnContact")
+    let contactButton = document.querySelector("#btnContact")
     let formulaire = document.getElementById("contact")
 
     //On désactive le submit automatique lors du cliquage sur le bouton pour s'en occuper nous même
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         labelError: tabLabelError,
         exemple: tabExemple
     }
-    clickButton.addEventListener("click", (event) => {
+    contactButton.addEventListener("click", (event) => {
         
 
         let formulaireValide = true
@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
             if (element.cle[index].value == "") {
                 formulaireValide = false
                 element.cle[index].style.borderColor = "#d52d2d"
+                element.cle[index].classList.add("is-invalid")
                 label.innerHTML = element.texteMissing[index]
             }
             else {
-                
-
                 element.cle[index].style.borderColor = "#000000"
+                element.cle[index].classList.remove("is-invalid")
                 label.innerHTML = ""
 
                 if ((element.cle[index].name == "nom") || (element.cle[index].name == "prenom") || (element.cle[index].name == "mail")) {
@@ -53,17 +53,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
                     if (!element.cle[index].value.match(element.regex[index])) {
                         formulaireValide = false
                         element.cle[index].style.borderColor = "#d52d2d"
+                        element.cle[index].classList.add("is-invalid")
                         let label = document.getElementById(element.labelError[index])
                         label.innerHTML = element.exemple[index]
                     }
                 }
             }           
         }
-
         //Si le formulaire n'est pas valide on n'envoie pas les données et on affiche un message
-        
         let label = document.getElementById("labelBtn")
-
         if (!formulaireValide) {
             label.innerHTML = "Au moins un des champs n'est pas correct"
         }
@@ -72,4 +70,5 @@ document.addEventListener("DOMContentLoaded", (e) => {
             label.innerHTML = ""
         }
     })
+
 })
