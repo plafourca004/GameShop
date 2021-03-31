@@ -33,7 +33,17 @@
                             <a class="nav-link" href="contact.php">Contact</a>
                         </li>
                     </ul>
+                    
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <?php
+                            if($_SESSION["logged_in"])
+                            {
+                                echo '<li class="nav-item">';
+                                echo '<a class="nav-link">'.$_SESSION["username"].'</a>';
+                                echo '</li>';
+                            }
+                        ?>
+
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ($_SESSION["logged_in"]) ? "logout.php" : "login.php" ?>" id="loginBtn"><?= ($_SESSION["logged_in"]) ? "Déconnexion" : "Connexion" ?></a>
                         </li>
