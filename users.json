@@ -3,15 +3,15 @@
     [
         {
             "login" : "nomUtilisateur",
-            "password" : "motDePasse"
+            "password" : "$2y$10$OsCALpSrG72v3W74nAYT6.GUAOvX8eEiyiFQLvUZup561qUYtpwUK"
         },
         {
             "login" : "nomUtilisateur2",
-            "password" : "motDePasse2"
+            "password" : "$2y$10$yFgHkW.3KD2AF5SoF.1jkemULhADxEDxurUlbLs896cZRZTPgZC0. "
         },
         {
             "login" : "nomUtilisateur3",
-            "password" : "motDePasse3"
+            "password" : "$2y$10$wzhS4rj9olbhTMu4gaU/TO4tngyhNizJIoJLNWvNEMiMhl0i9wCVC"
         }
     ]
 

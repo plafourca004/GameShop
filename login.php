@@ -30,7 +30,7 @@
             //Vérif du nom d'utilisateur
             if ($usernameValid != false) {
                 //Vérif mot de passe
-                if ($password == $user['password']) {
+                if (password_verify($password, $user['password'])) {
                     session_start();
                     $erreurForm = false;
                     $_SESSION["logged_in"] = true;
@@ -61,7 +61,7 @@
 
 
         <!-- Contenu -->
-        <div class="row bg-dark" style="height: 95vh;">
+        <div class="row bg-dark" style="min-height: 95vh;">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <main style="color: white; width: 40vw; ">
                     <a href="index.php" ><img src="img/assets/logo.png" alt="GAMEshop" class="logo"/></a>
