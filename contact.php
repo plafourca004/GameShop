@@ -13,7 +13,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="js/script.js"></script>
-    <!--<script src="js/formulaireContact.js"></script>-->
+    <script src="js/formulaireContact.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 </head>
 
@@ -36,7 +36,7 @@ session_start();
                     $errorList = array();
                     if(isset($_POST["btnContact"]))
                     {
-                        print_r($_POST);
+                        //print_r($_POST);
                         
                         $allFormInputs = array("nom","prenom","genre","mail","metier","dateNaiss","sujet","message","btnContact");
 
@@ -70,9 +70,26 @@ session_start();
 
                         if($isFormValid)
                         {
-                            //echo'<script>window.location = "index.php"</script>';
-                            echo'<script>console.log("Envoyé")</script>';
+                            $from = "admin@gameshop.fr";
+                            $to = "webmaster@gameshop.fr";
+                            $subject = "Demande de contact de ".$_POST['prenom']." ".$_POST['nom'];
+                            $headers = "De : ".$from;
+
+                            $message = "";
+                            $message .= "Nom : ".$_POST['nom']."\n";
+                            $message .= "Prénom : ".$_POST['prenom']."\n";
+                            $message .= "Genre : ".$_POST['genre']."\n";
+                            $message .= "Mail : ".$_POST['mail']."\n";
+                            $message .= "Métier : ".$_POST['metier']."\n";
+                            $message .= "Date de naissance : ".$_POST['dateNaiss']."\n";
+                            $message .= "Sujet : ".$_POST['sujet']."\n";
+                            $message .= "Message : ".$_POST['message']."\n";
                             
+                            $mail = mail($to, $subject, $message, $headers);
+
+                            if ($mail) {
+                                echo'<script>window.location = "index.php"</script>';
+                            }
                         }
                     }
                 ?>
