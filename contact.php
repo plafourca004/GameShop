@@ -13,7 +13,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="js/script.js"></script>
-    <script src="js/formulaireContact.js"></script>
+    <!--<script src="js/formulaireContact.js"></script>-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 </head>
 
@@ -36,6 +36,7 @@ session_start();
                     $errorList = array();
                     if(isset($_POST["btnContact"]))
                     {
+                        print_r($_POST);
                         
                         $allFormInputs = array("nom","prenom","genre","mail","metier","dateNaiss","sujet","message","btnContact");
 
@@ -69,7 +70,9 @@ session_start();
 
                         if($isFormValid)
                         {
-                            echo'<script>window.location = "index.php"</script>';
+                            //echo'<script>window.location = "index.php"</script>';
+                            echo'<script>console.log("Envoyé")</script>';
+                            
                         }
                     }
                 ?>
@@ -92,12 +95,18 @@ session_start();
                         <div class="row">
                             <div class="form-group">
                                 <label for="genreSelect">Genre</label><label style="color: #d52d2d;">*</label><br />
-                                <select class="form-control <?= (in_array("genre", $errorList)) ? "is-invalid" : "" ?>" name="genre" id="genreSelect">
-                                    <option value="" selected disabled>Choisissez un genre</option>
-                                    <option value="H" <?= (isset($_POST["genre"]) && $_POST["genre"] == "H") ? "selected" : "" ?> >Homme</option>
-                                    <option value="F" <?= (isset($_POST["genre"]) && $_POST["genre"] == "F") ? "selected" : "" ?> >Femme</option>
-                                    <option value="A" <?= (isset($_POST["genre"]) && $_POST["genre"] == "A") ? "selected" : "" ?> >Autre</option>
-                                </select>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="genre" value="Femme" checked>
+                                    <label class="form-check-label">Femme</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="genre" value="Homme">
+                                    <label class="form-check-label">Homme</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="genre" value="Autre" >
+                                    <label class="form-check-label">Autre</label>
+                                </div>
                                 <label id="labelGenre" class="important"><?= (in_array("genre", $errorList)) ? "Merci de renseigner un genre valable" : "" ?></label>
                             </div>
                         </div>
