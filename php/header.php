@@ -49,7 +49,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="basket.php">
-                                <i class="fab bi-cart2"></i> Panier <?= (isset($_SESSION["basket"]) ? array_sum(array_column($_SESSION["basket"], "nb")) : "") ?>
+                                <i class="fab bi-cart2"></i> Panier <?= (isset($_SESSION["basket"]) ? array_sum(array_column($_SESSION["basket"], "nb")) : 0) ?>
                             </a>
                         </li>
                     </ul>

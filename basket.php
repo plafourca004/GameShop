@@ -28,6 +28,10 @@ session_start();
                 array_splice($_SESSION["basket"], $_POST["nbADelete"], 1);
             }
 
+            if(isset($_POST["deleteBasket"]))
+            {
+                $_SESSION["basket"] = Array();
+            }
 
             include("php/header.php");
         ?>
@@ -36,7 +40,7 @@ session_start();
         <div class="row" style="min-height: 95vh;">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <main>
-                <table class="table">
+                <table class="table" <?= (empty($_SESSION['basket'])) ? 'hidden="hidden"' : "" ?>>
                     <thead>
                         <tr>
                         <th scope="col">Jeu</th>
@@ -44,8 +48,8 @@ session_start();
                         <th scope="col">Plateforme</th>
                         <th scope="col">Prix</th>
                         <th scope="col">Quantité</th>
-                        <th scope="col">Supprimer</th>
                         <th scope="col">Total</th>
+                        <th scope="col" style="text-align: center; width:100px">Supprimer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,44 +66,61 @@ session_start();
                                             <td><?= $jeu["plateforme"] ?></td>
                                             <td><?= $jeu["prix"] ?>€</td>
                                             <td><?= $jeu["nb"] ?></td>
+                                            <td><?= $jeu["nb"]*$jeu["prix"] ?>€</td>
                                             
-                                            <td>
+                                            <td style="text-align: center;">
                                                 <form action="" method="post">
                                                     <input type="hidden" name="nbADelete" value="<?= $key ?>" />
                                                     <input type="submit" name="delete" class="btn btn-danger" value="Supprimer" />
                                                 </form>    
                                             </td>
-                                            <td><?= $jeu["nb"]*$jeu["prix"] ?>€</td>
 
                                         </tr>
                                 <?php
                                  }
                         }
+                        else {
+                            echo "<h3>Votre panier est vide.</h3>";
+                        }
                     ?>
                     </tbody>
                     <tbody>
-                        <td>Total</td>
+                        <td style="vertical-align: middle; font-weight: bold;">Total</td>
 
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td>
+                        <td style="vertical-align: middle; font-weight: bold;">
                             <?php
                                 $total = 0;
                                 foreach($_SESSION['basket'] as $jeu)
                                 {
-                                    $total += $jeu["nb"]*$jeu["prix"];
+                                    if ($jeu["nb"] > $jeu["stock"]) {
+                                        $total += $jeu["stock"]*$jeu["prix"];
+                                    } 
+                                    else {
+                                        $total += $jeu["nb"]*$jeu["prix"];
+                                    }
                                 }
 
                                 echo $total;
-                            ?>€</td>
+                            ?>€
+                        </td>
+                        
+                        <td style="text-align: center;" >
+                            <form action="" method="post"  <?= (empty($_SESSION['basket'])) ? 'hidden="hidden"' : "" ?>>
+                                <input type="hidden" name="deleteBasket" value="<?= $key ?>" />
+                                <input type="submit" name="delete" class="btn btn-danger" value="Supprimer le panier" />
+                            </form>
+                        </td>
+                        
                     
                     </tbody>
-                  </table>
+                    </table>
                     
-                  <button class="btn btn-warning">Commander</button>
+                    <button class="btn btn-warning" <?= (empty($_SESSION['basket'])) ? 'hidden="hidden"' : "" ?>>Commander</button>
+                                
                 </main>
             </div>
         </div>

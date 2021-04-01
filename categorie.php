@@ -23,23 +23,30 @@ session_start();
             if(isset($_POST["nom"]))
             {
                 $index = -1;
-                foreach($_SESSION["basket"] as $key => $jeu)
-                {
-                    if($jeu["id"] == $_POST["id"])
+                if (!empty($_SESSION['basket'])) {
+                    foreach($_SESSION["basket"] as $key => $jeu)
                     {
-                        echo '<script>console.log("wow")</script>';
-                        $index = $key;
-                        break;
-                    } 
+                        if($jeu["id"] == $_POST["id"])
+                        {
+                            echo '<script>console.log("wow")</script>';
+                            $index = $key;
+                            break;
+                        } 
+                    }
+                    if($index == -1)
+                    {
+                        array_push($_SESSION["basket"], $_POST);
+                    }
+                    else
+                    {
+                        $_SESSION["basket"][$index]["nb"] += $_POST["nb"];
+                    }
                 }
-                if($index == -1)
-                {
+                else {
+                    $_SESSION["basket"] = Array();
                     array_push($_SESSION["basket"], $_POST);
                 }
-                else
-                {
-                    $_SESSION["basket"][$index]["nb"] += $_POST["nb"];
-                }
+                
             }
 
 
