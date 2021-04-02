@@ -33,6 +33,7 @@ session_start();
                     <br />
 
                     <?php
+
                     $errorList = array();
                     if(isset($_POST["btnContact"]))
                     {
@@ -70,26 +71,52 @@ session_start();
 
                         if($isFormValid)
                         {
-                            $from = "admin@gameshop.fr";
+
+                            //Envoie du mail
+                            
+                            require_once 'vendor/autoload.php';
+                            
                             $to = "webmaster@gameshop.fr";
                             $subject = "Demande de contact de ".$_POST['prenom']." ".$_POST['nom'];
                             $headers = "De : ".$from;
 
-                            $message = "";
-                            $message .= "Nom : ".$_POST['nom']."\n";
-                            $message .= "Prénom : ".$_POST['prenom']."\n";
-                            $message .= "Genre : ".$_POST['genre']."\n";
-                            $message .= "Mail : ".$_POST['mail']."\n";
-                            $message .= "Métier : ".$_POST['metier']."\n";
-                            $message .= "Date de naissance : ".$_POST['dateNaiss']."\n";
-                            $message .= "Sujet : ".$_POST['sujet']."\n";
-                            $message .= "Message : ".$_POST['message']."\n";
-                            
-                            $mail = mail($to, $subject, $message, $headers);
+                            $body = "";
+                            $body .= "Nom : ".$_POST['nom']." \n";
+                            $body .= "Prénom : ".$_POST['prenom']." \n";
+                            $body .= "Genre : ".$_POST['genre']." \n";
+                            $body .= "Mail : ".$_POST['mail']." \n";
+                            $body .= "Métier : ".$_POST['metier']." \n";
+                            $body .= "Date de naissance : ".$_POST['dateNaiss']." \n";
+                            $body .= "Sujet : ".$_POST['sujet']." \n";
+                            $body .= "Message : ".$_POST['message']." \n";
 
-                            if ($mail) {
-                                echo'<script>window.location = "index.php"</script>';
+                            try {
+                                // Create the Transport
+                                $transport = (new Swift_SmtpTransport('smtp.googlemail.com', 465, 'ssl'))
+                                ->setUsername("gameshop.projetdevweb@gmail.com")
+                                ->setPassword('paulkilian')
+                                ;
+                            
+                                // Create the Mailer using your created Transport
+                                $mailer = new Swift_Mailer($transport);
+                            
+                                $message = (new Swift_Message('Email Through Swift Mailer'))
+                                ->setFrom(["gameshop.projetdevweb@gmail.com" => "Gameshop - Contact page"])
+                                ->setTo(["gameshop.projetdevweb@gmail.com"])
+                                ->setBody($body)
+                                ->setContentType('text/html');
+                                $message->getHeaders()->get('Subject')->setValue($subject); //Ajouter un sujet
+
+                            
+                                // Send the message
+                                $mailer->send($message);
+                            
+                                echo 'Email has been sent.';
+                            } catch(Exception $e) {
+                                echo $e->getMessage();
                             }
+                            
+                            echo'<script>window.location = "index.php"</script>';
                         }
                     }
                 ?>
