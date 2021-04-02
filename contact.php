@@ -76,9 +76,7 @@ session_start();
                             
                             require_once 'vendor/autoload.php';
                             
-                            $to = "webmaster@gameshop.fr";
                             $subject = "Demande de contact de ".$_POST['prenom']." ".$_POST['nom'];
-                            $headers = "De : ".$from;
 
                             $body = "";
                             $body .= "Nom : ".$_POST['nom']." \n";
