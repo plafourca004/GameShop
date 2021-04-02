@@ -138,7 +138,7 @@ session_start();
                             <div class="form-group">
                                 <label for="genreSelect">Genre</label><label style="color: #d52d2d;">*</label><br />
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="genre" value="Femme" <?= (isset($_POST["genre"]) && $_POST["genre"] == "Femme") ? "checked" : "" ?>>
+                                    <input class="form-check-input" type="radio" name="genre" value="Femme" <?= (!isset($_POST["genre"]) || $_POST["genre"] == "Femme") ? "checked" : "" ?>>
                                     <label class="form-check-label">Femme</label>
                                 </div>
                                 <div class="form-check">
