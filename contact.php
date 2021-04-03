@@ -76,7 +76,7 @@ session_start();
                             
                             require_once 'vendor/autoload.php';
                             
-                            $subject = "Demande de contact de ".$_POST['prenom']." ".$_POST['nom'];
+                            $subject = "Nouveau contact au sujet de ".$_POST["sujet"];
 
                             $body = "";
                             $body .= "Nom : ".$_POST['nom']." \n";
