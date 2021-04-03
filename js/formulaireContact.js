@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
     let formulaire = document.getElementById("contact")
 
     //On désactive le submit automatique lors du cliquage sur le bouton pour s'en occuper nous même
-    formulaire.addEventListener('submit', (event) => {
-        event.preventDefault();
-    });
+    //formulaire.addEventListener('submit', (event) => {
+    //    event.preventDefault();
+    //});
 
 
     let tabNomElements = new Array("nom", "prenom", /*"genre",*/ "mail", "metier", "dateNaiss", "sujet", "message")
@@ -63,10 +63,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
         //Si le formulaire n'est pas valide on n'envoie pas les données et on affiche un message
         let label = document.getElementById("labelBtn")
         if (!formulaireValide) {
+            
+            event.preventDefault();
             label.innerHTML = "Au moins un des champs n'est pas correct"
         }
         else {
-            formulaire.submit()
             label.innerHTML = ""
         }
     })
