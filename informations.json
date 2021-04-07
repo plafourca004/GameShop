@@ -8,7 +8,7 @@
             {
                 "nom": "Assassin's Creed : Valhalla",
                 "id": "jps1",
-                "prix": 50,
+                "prix": 40,
                 "stock": 45,
                 "imageURL": "img/playstation/acValhalla.jpg"
             },
@@ -97,14 +97,14 @@
         "Xbox" :
         [
             {
-                "nom" : "Assassin's Creed : Valahalla",
+                "nom" : "Assassin's Creed : Valhalla",
                 "id" : "jx1",
                 "prix" : 50,
                 "stock" : 7,
                 "imageURL" : "img/xbox/acValhalla.jpg"
             },
             {
-                "nom" : "Civilisation 6",
+                "nom" : "Civilization VI",
                 "id" : "jx2",
                 "prix" : 15,
                 "stock" : 11,

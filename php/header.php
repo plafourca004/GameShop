@@ -1,3 +1,8 @@
+<?php
+    require_once("bdd.php");
+    connexionBDD();
+?>
+
 <!-- Menu -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -19,12 +24,21 @@
 
 
                         <?php
-                        require_once("php/varSession.inc.php");
+                        /*require_once("php/varSession.inc.php");
 
                         foreach($_SESSION["categories"] as $cat)
                         {
                             echo '<li class="nav-item">';
                             echo '<a class="nav-link" href="categorie.php?cat='.$cat.'">'.$cat.'</a>';
+                            echo '</li>';
+                        }*/
+
+                        //On récupère les plateformes en BDD
+                        $plateformes = getPlatforms();
+                        foreach($plateformes as $plateforme)
+                        {
+                            echo '<li class="nav-item">';
+                            echo '<a class="nav-link" href="categorie.php?cat='.$plateforme['namePlatform'].'">'.$plateforme['namePlatform'].'</a>';
                             echo '</li>';
                         }
                         

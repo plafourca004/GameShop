@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 session_start();
+require_once("php/bdd.php");
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +27,6 @@ session_start();
                 if (!empty($_SESSION['basket'])) {
                     foreach($_SESSION["basket"] as $key => $jeu)
                     {
-                        if($jeu["id"] == $_POST["id"])
                         {
                             echo '<script>console.log("wow")</script>';
                             $index = $key;
@@ -70,10 +70,15 @@ session_start();
 
                             $category = htmlspecialchars($_GET['cat']);
 
-                            if(in_array($category, $_SESSION["categories"]))
+                            //Appel en db
+                            connexionBDD();
+                            $plateforms = getPlatforms();
+                            print_r($plateforms[0]);
+
+                            if(in_array($category, $plateforms))
                             {
                                 //affichage des jeu
-                                foreach($_SESSION[$category] as $jeu)
+                                foreach(getGames($category) as $jeu)
                                 { ?>
                                     <div class="card text-center mb-4 h-100">
                                         <div class="card-header">
@@ -116,8 +121,10 @@ session_start();
                                 echo'<br/>';
                             }
 
-                            
+                    
+                            deconnexionBDD();
                             ?>
+
 
                         </div>
                     </div>
