@@ -67,35 +67,6 @@
         return ($data == null) ? null : $data;
     }
 
-    
-    
-
-    connexionBDD();
-
-    echo "Users : ";
-    echo "</br>";
-    print_r(getUsers()[0]);
-    echo "</br>";
-    echo "</br>";
-
-   echo "Plateformes : ";
-    echo "</br>";
-    print_r(getPlatforms()[0]);
-    echo "</br>";
-    echo "</br>";
-
-    echo "Jeux Xbox : ";
-    echo "</br>";
-    print_r(getGames("Xbox")[0]);
-    echo "</br>";
-    echo "</br>";
-
-    echo "Nom des jeux : ";
-    echo "</br>";
-    print_r(getGamesName()[0]);
-    echo "</br>";
-    echo "</br>";
-
 
 
     deconnexionBDD();
