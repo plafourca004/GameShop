@@ -24,24 +24,18 @@
 
 
                         <?php
-                        /*require_once("php/varSession.inc.php");
-
-                        foreach($_SESSION["categories"] as $cat)
-                        {
-                            echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="categorie.php?cat='.$cat.'">'.$cat.'</a>';
-                            echo '</li>';
-                        }*/
 
                         //On récupère les plateformes en BDD
                         $plateformes = getPlatforms();
+
+                        //Pour chaque catégorie, on l'affiche dans le header
                         foreach($plateformes as $plateforme)
                         {
                             echo '<li class="nav-item">';
                             echo '<a class="nav-link" href="categorie.php?cat='.$plateforme['namePlatform'].'">'.$plateforme['namePlatform'].'</a>';
                             echo '</li>';
                         }
-                        
+
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">Contact</a>
@@ -50,6 +44,8 @@
                     
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php
+                            
+
                             if($_SESSION["logged_in"])
                             {
                                 echo '<li class="nav-item">';

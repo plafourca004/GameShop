@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once("php/bdd.php");
     require_once("php/varSession.inc.php");
 
     if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
@@ -15,21 +16,13 @@
             $password = trim($_POST['password']);
             
             $users = $_SESSION["users"];
-            $usernameValid = false;
-            
-            
-            //Recherche nom d'utilisateur 
-            foreach ($users as $key => $user) {
-                $usernameValid = array_search($username, $user);
-                if($usernameValid != false){
-                    //echo "<script>console.log('"."DANS FOREACH : ".$usernameValid."')</script>";
-                    break;
-                }
-            }
 
-            //Vérif du nom d'utilisateur
-            if ($usernameValid != false) {
-                //Vérif mot de passe
+            connexionBDD();
+            $user = getUser($username);
+            deconnexionBDD();
+            
+            if ($user != null) {
+                //Vérif du mot de passe
                 if (password_verify($password, $user['password'])) {
                     session_start();
                     $erreurForm = false;
@@ -39,6 +32,7 @@
                     exit;
                 }
             }
+            
         }
     }  
 ?>

@@ -37,6 +37,19 @@
         return ($data == null) ? null : $data;
     }
 
+    function getUser($username) {   
+        $reponse = $GLOBALS['BDD']->query('SELECT * FROM User WHERE username = "'.$username.'"');
+        $fetch = $reponse->fetchAll();
+        if (sizeof($fetch)) {
+            $data = array('idUser' => $fetch[0]['idUser'], 'username' => $fetch[0]['username'], 'password' => $fetch[0]['pass']);
+        }
+        else {
+           $data = null;
+        }
+        
+        return ($data == null) ? null : $data;
+    }
+
     function getPlatforms() {
         $reponse = $GLOBALS['BDD']->query("SELECT idPlatform, namePlatform FROM Platform");
         $data = array();
@@ -67,8 +80,5 @@
         return ($data == null) ? null : $data;
     }
 
-
-
-    deconnexionBDD();
     
 ?>
