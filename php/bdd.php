@@ -27,53 +27,42 @@
         $GLOBALS['BDD'] = null;
     }
 
-    /*function getUsers()
-    {
+    function getUsers() {   
         $reponse = $GLOBALS['BDD']->query("SELECT * FROM User");
-        $data = $reponse->fetchAll();
-        
-        return ($data == null) ? null : $data;
-    }*/
-
-    /*function getUsers()
-    {
-        $reponse = $GLOBALS['BDD']->query("SELECT * FROM User");
-        //$data = $reponse->fetchAll();
         $data = array();
         foreach ($reponse as $row) {
-            array_push($data, 'idUser' => $row['idUser'], 'username' => $row['username'], 'password' => $row['pass'] );
+            array_push($data, array('idUser' => $row['idUser'], 'username' => $row['username'], 'password' => $row['pass']));
         }
-        print_r($data);
         
         return ($data == null) ? null : $data;
-    }*/
-/*
-        $select = 'SELECT themeRetombee, COUNT(idRetombee) FROM RetombeePresse GROUP BY themeRetombee';
-        $query = $GLOBALS['BDD']->query($select);
-        foreach ($query as $row) {
-            echo $row['themeRetombee']." : ".$row['COUNT(idRetombee)'];
-            echo '</br>';
-        }*/
+    }
 
     function getPlatforms() {
-        $reponse = $GLOBALS['BDD']->query("SELECT namePlatform FROM Platform");
-        $data = $reponse->fetchAll();
+        $reponse = $GLOBALS['BDD']->query("SELECT idPlatform, namePlatform FROM Platform");
+        $data = array();
+        foreach ($reponse as $row) {
+            array_push($data, array('idPlatform' => $row['idPlatform'], 'namePlatform' => $row['namePlatform']));
+        }
         
         return ($data == null) ? null : $data;
     }
 
     function getGames($platform) {
-        $query = 'SELECT i.*, p.namePlatform, g.nameGame FROM IsInPlatform i JOIN Platform p ON i.idPlatform = p.idPlatform JOIN Game g ON g.idGame = i.idGame WHERE p.namePlatform = "'.$platform.'"';
-        $reponse = $GLOBALS['BDD']->query($query);
-        $data = $reponse->fetchAll();
+        $reponse = $GLOBALS['BDD']->query('SELECT i.*, p.namePlatform, g.nameGame FROM IsInPlatform i JOIN Platform p ON i.idPlatform = p.idPlatform JOIN Game g ON g.idGame = i.idGame WHERE p.namePlatform = "'.$platform.'"');
+        $data = array();
+        foreach ($reponse as $row) {
+            array_push($data, array('nameGame' => $row['nameGame'], 'namePlatform' => $row['namePlatform'], 'price' => $row['price'], 'stock' => $row['stock'], 'imageURL' => $row['imageURL']));
+        }
         
         return ($data == null) ? null : $data;
     }
 
     function getGamesName() {
-        $query = 'SELECT nameGame FROM Game';
-        $reponse = $GLOBALS['BDD']->query($query);
-        $data = $reponse->fetchAll();
+        $reponse = $GLOBALS['BDD']->query("SELECT nameGame FROM Game");
+        $data = array();
+        foreach ($reponse as $row) {
+            array_push($data, array('nameGame' => $row['nameGame']));
+        }
         
         return ($data == null) ? null : $data;
     }
@@ -85,11 +74,11 @@
 
     echo "Users : ";
     echo "</br>";
-    print_r(getUsers());
+    print_r(getUsers()[0]);
     echo "</br>";
     echo "</br>";
 
-   /*echo "Plateformes : ";
+   echo "Plateformes : ";
     echo "</br>";
     print_r(getPlatforms()[0]);
     echo "</br>";
@@ -105,7 +94,7 @@
     echo "</br>";
     print_r(getGamesName()[0]);
     echo "</br>";
-    echo "</br>";*/
+    echo "</br>";
 
 
 
