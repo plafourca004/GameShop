@@ -48,10 +48,10 @@
     }
 
     function getGames($platform) {
-        $reponse = $GLOBALS['BDD']->query('SELECT i.*, p.namePlatform, g.nameGame FROM IsInPlatform i JOIN Platform p ON i.idPlatform = p.idPlatform JOIN Game g ON g.idGame = i.idGame WHERE p.namePlatform = "'.$platform.'"');
+        $reponse = $GLOBALS['BDD']->query('SELECT i.*, p.namePlatform, g.* FROM IsInPlatform i JOIN Platform p ON i.idPlatform = p.idPlatform JOIN Game g ON g.idGame = i.idGame WHERE p.namePlatform = "'.$platform.'"');
         $data = array();
         foreach ($reponse as $row) {
-            array_push($data, array('nameGame' => $row['nameGame'], 'namePlatform' => $row['namePlatform'], 'price' => $row['price'], 'stock' => $row['stock'], 'imageURL' => $row['imageURL']));
+            array_push($data, array('nameGame' => $row['nameGame'], 'namePlatform' => $row['namePlatform'], 'price' => $row['price'], 'stock' => $row['stock'], 'imageURL' => $row['imageURL'], 'idGame' => $row["idGame"]));
         }
         
         return ($data == null) ? null : $data;

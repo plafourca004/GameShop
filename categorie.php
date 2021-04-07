@@ -72,22 +72,30 @@ require_once("php/bdd.php");
 
                             //Appel en db
                             connexionBDD();
-                            $plateforms = getPlatforms();
-                            print_r($plateforms[0]);
+                            $plateformes = getPlatforms();
+                            $found = false;
+                            //$category in array
+                            foreach($plateformes as $plateforme)
+                            {
+                                if($plateforme["namePlatform"] == $category)
+                                {
+                                    $found = true;
+                                }
+                            }
 
-                            if(in_array($category, $plateforms))
+                            if($found)
                             {
                                 //affichage des jeu
                                 foreach(getGames($category) as $jeu)
                                 { ?>
                                     <div class="card text-center mb-4 h-100">
                                         <div class="card-header">
-                                            <img src="<?= $jeu['imageURL'] ?>" class="card-img-top imgS" alt="<?= $jeu["nom"]?>" id="jpc5">
+                                            <img src="<?= $jeu['imageURL'] ?>" class="card-img-top imgS" alt="<?= $jeu["nameGame"]?>" id="jpc5">
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title"><?= $jeu["nom"] ?></h5>
-                                            <p class="card-text"><?= $jeu["id"] ?></p>
-                                            <p class="card-text"><?= $jeu["prix"] ?>€</p>
+                                            <h5 class="card-title"><?= $jeu["nameGame"] ?></h5>
+                                            <p class="card-text"><?= $jeu["idGame"] ?></p>
+                                            <p class="card-text"><?= $jeu["price"] ?>€</p>
                                             <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number"><?= $jeu["stock"] ?></span> en stock</span>         
                                             <br/>
                                             <button type="button" class="card-btn btn btn-primary" id="decrement" disabled="true">-</button>
