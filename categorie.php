@@ -21,12 +21,13 @@ require_once("php/bdd.php");
             
             require("php/varSession.inc.php");
 
-            if(isset($_POST["nom"]))
+            if(isset($_POST["nameGame"]))
             {
                 $index = -1;
                 if (!empty($_SESSION['basket'])) {
                     foreach($_SESSION["basket"] as $key => $jeu)
                     {
+                        if($jeu["nameGame"] == $_POST["nameGame"] && $jeu["plateforme"] == $_POST["plateforme"])
                         {
                             echo '<script>console.log("wow")</script>';
                             $index = $key;
