@@ -80,5 +80,8 @@
         return ($data == null) ? null : $data;
     }
 
-    
+    function decreaseStock($nb, $idGame, $idPlatform) {
+        $response = $GLOBALS['BDD']->query("UPDATE IsInPlatform SET stock = stock - $nb WHERE idGame = '$idGame' AND idPlatform = '$idPlatform'");
+        return $response;
+    }
 ?>

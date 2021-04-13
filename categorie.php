@@ -28,9 +28,8 @@ require_once("php/bdd.php");
                 if (!empty($_SESSION['basket'])) {
                     foreach($_SESSION["basket"] as $key => $jeu)
                     {
-                        if($jeu["nameGame"] == $_POST["nameGame"] && $jeu["plateforme"] == $_POST["plateforme"])
+                        if($jeu["nameGame"] == $_POST["nameGame"] && $jeu["namePlatform"] == $_POST["namePlatform"])
                         {
-                            echo '<script>console.log("wow")</script>';
                             $index = $key;
                             break;
                         } 
@@ -70,20 +69,22 @@ require_once("php/bdd.php");
                             //Appel en db
                             connexionBDD();
                             $plateformes = getPlatforms();
-                            $found = false;
+                            $plateformExists = false;
                             //$category in array
                             foreach($plateformes as $plateforme)
                             {
                                 if($plateforme["namePlatform"] == $category)
                                 {
-                                    $found = true;
+                                    $plateformExists = true;
+                                    $idPlatform = $plateforme["idPlatform"];
                                 }
                             }
 
-                            if($found)
+                            if($plateformExists)
                             {
                                 //affichage des jeu
-                                foreach(getGames($category) as $jeu)
+                                $listGames = getGames($category);
+                                foreach($listGames as $jeu)
                                 { ?>
                                     <div class="card text-center mb-4 h-100">
                                         <div class="card-header">
@@ -106,7 +107,7 @@ require_once("php/bdd.php");
                                                 {
                                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'" />';
                                                 }
-                                                echo '<input type="hidden" name="plateforme" value="'.$category.'" />';
+                                                echo '<input type="hidden" name="idPlatform" value="'.$idPlatform.'" />';
                                                 echo '<input type="hidden" name="nb" class="inputNb" value="1" />';
                                                 ?>
                                                 

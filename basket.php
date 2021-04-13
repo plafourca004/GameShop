@@ -14,7 +14,6 @@ session_start();
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <!--<script src="js/basket.js"></script>-->
 </head>
 
 <body>
@@ -58,12 +57,12 @@ session_start();
                             
                             foreach($_SESSION['basket'] as $key => $jeu)
                                 { 
-                                if($jeu['nb'] > $jeu['stock']) $jeu['nb'] = $jeu['stock'];
+                                    if($jeu['nb'] > $jeu['stock']) $jeu['nb'] = $jeu['stock'];
                                     ?>
                                         <tr>
                                             <td><img src="<?= $jeu['imageURL'] ?>" class="basket-img" alt="<?= $jeu["nameGame"]?>" id="<?= $jeu["idGame"]?>"></td>
-                                            <td><?= $jeu["nameGame"] ?></td>
-                                            <td><?= $jeu["plateforme"] ?></td>
+                                            <td id="<?= $jeu["idGame"] ?>"><?= $jeu["nameGame"] ?></td>
+                                            <td id="<?=$jeu["idPlatform"] ?>" ><?= $jeu["namePlatform"] ?></td>
                                             <td><?= $jeu["price"] ?>€</td>
                                             <td><?= $jeu["nb"] ?></td>
                                             <td><?= $jeu["nb"]*$jeu["price"] ?>€</td>
@@ -84,7 +83,7 @@ session_start();
                         }
                     ?>
                     </tbody>
-                    <tbody>
+                    <tfoot>
                         <td style="vertical-align: middle; font-weight: bold;">Total</td>
 
                         <td></td>
@@ -116,11 +115,45 @@ session_start();
                         </td>
                         
                     
-                    </tbody>
+                    </tfoot>
                     </table>
+
+                    <!-- /////////////// -->
+
+                    <?
+
+                        //TODO:
+                        // Eviter stock negatif
+                        // Supprimer contenu du basket apres avoir commandé
+                        // Ajout des moyens de paiement
+                        //      Le reste des trucs optionnels sur le rendu qui rapportent des points $$$$
+                        
+                    ?>
+
+                    <!-- /////////////// -->
                     
-                    <button class="btn btn-warning" <?= (empty($_SESSION['basket'])) ? 'hidden="hidden"' : "" ?>>Commander</button>
-                                
+                    
+                    <button class="btn btn-warning" <?= (empty($_SESSION['basket'])) ? 'hidden="hidden"' : "" ?> onclick="commander()">Commander</button>
+                    
+                    <script type="module">
+                        import { loadRemoteJson } from "./ajax/remoteJSONContent.js"   
+                        window.loadRemoteJson = loadRemoteJson; //Stack overflow
+                    </script>    
+                    <script>
+
+                        function commander()
+                        {
+                            const jeux = document.querySelector("tbody").children
+                            for(let i = 0; i < jeux.length; i++)
+                            {
+                                const quantite = jeux[i].children[4].innerHTML
+                                const idGame = jeux[i].children[1].id
+                                const idPlatform = jeux[i].children[2].id
+                                loadRemoteJson(`./ajax/getJsonProducts.php?nb=${quantite}&idGame=${idGame}&idPlatform=${idPlatform}`)
+                                    .then((data) => console.log(data))
+                            }
+                        }
+                    </script>
                 </main>
             </div>
         </div>
