@@ -44,8 +44,6 @@
                     
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php
-                            
-
                             if($_SESSION["logged_in"])
                             {
                                 echo '<li class="nav-item">';
@@ -57,11 +55,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ($_SESSION["logged_in"]) ? "logout.php" : "login.php" ?>" id="loginBtn"><?= ($_SESSION["logged_in"]) ? "Déconnexion" : "Connexion" ?></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="basket.php">
-                                <i class="fab bi-cart2"></i> Panier <?= (isset($_SESSION["basket"]) ? array_sum(array_column($_SESSION["basket"], "nb")) : 0) ?>
-                            </a>
-                        </li>
+
+                        <?php
+                            if($_SESSION["logged_in"])
+                            {
+                                echo '<li class="nav-item">';
+                                echo '<a class="nav-link" href="basket.php">';
+                                echo '<i class="fab bi-cart2"> Panier '.(isset($_SESSION["basket"]) ? array_sum(array_column($_SESSION["basket"], "nb")) : 0).'</i>';
+                                echo '</a>';
+                                echo '</li>';
+                            }
+                        ?>
+
                     </ul>
                 </div>
             </div>
