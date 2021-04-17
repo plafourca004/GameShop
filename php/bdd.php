@@ -80,8 +80,21 @@
         return ($data == null) ? null : $data;
     }
 
+    function getStockOfGame($idGame, $idPlatform) {
+        $response = $GLOBALS['BDD']->query("SELECT stock FROM IsInPlatform WHERE idGame = '$idGame' AND idPlatform = '$idPlatform'")->fetch(PDO::FETCH_ASSOC);
+        return $response["stock"];
+    }
+
     function decreaseStock($nb, $idGame, $idPlatform) {
-        $response = $GLOBALS['BDD']->query("UPDATE IsInPlatform SET stock = stock - $nb WHERE idGame = '$idGame' AND idPlatform = '$idPlatform'");
+        if(getStockOfGame($idGame, $idPlatform) >= $nb)
+        {
+            $GLOBALS['BDD']->query("UPDATE IsInPlatform SET stock = stock - $nb WHERE idGame = '$idGame' AND idPlatform = '$idPlatform'");
+            $response = Array("success" => "Stock updated");
+        }
+        else
+        {
+            $response = Array("error" => "Stock trop faible");
+        }
         return $response;
     }
 ?>

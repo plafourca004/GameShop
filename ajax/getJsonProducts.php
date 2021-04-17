@@ -10,9 +10,12 @@
         {
             error_log("PAGE LOAD");
             connexionBDD();
-            decreaseStock(htmlspecialchars($_GET["nb"]),htmlspecialchars($_GET["idGame"]),htmlspecialchars($_GET["idPlatform"]));
+            $result = decreaseStock(htmlspecialchars($_GET["nb"]),htmlspecialchars($_GET["idGame"]),htmlspecialchars($_GET["idPlatform"]));
             deconnexionBDD();
-            echo json_encode(array("success" => "Stock updated"));
+            if(empty($result["error"]))
+                echo json_encode(array("success" => $result["success"]));
+            else
+                echo json_encode(array("error" => $result["error"]));
         }
         else
         {
