@@ -92,13 +92,12 @@ require_once("php/bdd.php");
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $jeu["nameGame"] ?></h5>
-                                            <p class="card-text"><?= $jeu["idGame"] ?></p>
                                             <p class="card-text"><?= $jeu["price"] ?>€</p>
                                             <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number"><?= $jeu["stock"] ?></span> en stock</span>         
-                                            <br/>
+                                            </br>
                                             <button type="button" class="card-btn btn btn-primary" id="decrement" disabled="true">-</button>
-                                            <span id="number-chosen">1</span>
-                                            <button type="button" class="card-btn btn btn-primary" id="increment">+</button>
+                                            <span id="number-chosen"><?= ($jeu["stock"] == 0) ? 0 : 1 ?></span>
+                                            <button type="button" class="card-btn btn btn-primary" id="increment" <?= ($jeu["stock"] == 0) ? "disabled" : "" ?>>+</button>
                                         </div>
                                         <div class="card-footer">
                                             <form action="categorie.php?cat=<?= $category ?>" method="post">
@@ -111,7 +110,7 @@ require_once("php/bdd.php");
                                                 echo '<input type="hidden" name="nb" class="inputNb" value="1" />';
                                                 ?>
                                                 
-                                                <input type="submit" class="btn btn-primary" value="Ajouter au panier" <?= (empty($_SESSION["username"])) ? "disabled" : "" ?> />
+                                                <input type="submit" class="btn <?= ($jeu["stock"] == 0)? "btn-danger" : "btn-primary" ?>" value=" <?= ($jeu["stock"] == 0)? "Rupture de stock" : "Ajouter au panier" ?>" <?= (empty($_SESSION["username"]) || $jeu["stock"] == 0) ? "disabled" : "" ?> />
                                             </form>
                                             
                                         </div>

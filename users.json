@@ -2,16 +2,24 @@
     "users" : 
     [
         {
+            "login" : "admin",
+            "password" : "$2y$10$fW6gRHVu1L///UhHs0lGXe9uIHtHFAADntGO0kgU0HVa11hLDKSOG",
+            "role" : "admin"
+        },
+        {
             "login" : "nomUtilisateur",
-            "password" : "$2y$10$OsCALpSrG72v3W74nAYT6.GUAOvX8eEiyiFQLvUZup561qUYtpwUK"
+            "password" : "$2y$10$OsCALpSrG72v3W74nAYT6.GUAOvX8eEiyiFQLvUZup561qUYtpwUK",
+            "role" : "user"
         },
         {
             "login" : "nomUtilisateur2",
-            "password" : "$2y$10$yFgHkW.3KD2AF5SoF.1jkemULhADxEDxurUlbLs896cZRZTPgZC0. "
+            "password" : "$2y$10$yFgHkW.3KD2AF5SoF.1jkemULhADxEDxurUlbLs896cZRZTPgZC0. ",
+            "role" : "user"
         },
         {
             "login" : "nomUtilisateur3",
-            "password" : "$2y$10$wzhS4rj9olbhTMu4gaU/TO4tngyhNizJIoJLNWvNEMiMhl0i9wCVC"
+            "password" : "$2y$10$wzhS4rj9olbhTMu4gaU/TO4tngyhNizJIoJLNWvNEMiMhl0i9wCVC",
+            "role" : "user"
         }
     ]
 

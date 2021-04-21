@@ -31,7 +31,7 @@
         $reponse = $GLOBALS['BDD']->query("SELECT * FROM User");
         $data = array();
         foreach ($reponse as $row) {
-            array_push($data, array('idUser' => $row['idUser'], 'username' => $row['username'], 'password' => $row['pass']));
+            array_push($data, array('idUser' => $row['idUser'], 'username' => $row['username'], 'password' => $row['pass'], 'role' => $row['roleUser']));
         }
         
         return ($data == null) ? null : $data;
@@ -41,7 +41,7 @@
         $reponse = $GLOBALS['BDD']->query('SELECT * FROM User WHERE username = "'.$username.'"');
         $fetch = $reponse->fetchAll();
         if (sizeof($fetch)) {
-            $data = array('idUser' => $fetch[0]['idUser'], 'username' => $fetch[0]['username'], 'password' => $fetch[0]['pass']);
+            $data = array('idUser' => $fetch[0]['idUser'], 'username' => $fetch[0]['username'], 'password' => $fetch[0]['pass'], 'role' => $fetch[0]['roleUser']);
         }
         else {
            $data = null;

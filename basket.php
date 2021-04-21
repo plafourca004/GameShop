@@ -123,8 +123,8 @@ session_start();
                     <?
 
                         //TODO:
-                        // Eviter stock negatif
-                        // Supprimer contenu du basket apres avoir commandé
+                        // Eviter stock negatif   C'EST FAIT !!! 
+                        // Supprimer contenu du basket apres avoir commandé 
                         // Ajout des moyens de paiement
                         //      Le reste des trucs optionnels sur le rendu qui rapportent des points $$$$
                         
@@ -149,9 +149,18 @@ session_start();
                                 const quantite = jeux[i].children[4].innerHTML
                                 const idGame = jeux[i].children[1].id
                                 const idPlatform = jeux[i].children[2].id
-                                loadRemoteJson(`./ajax/getJsonProducts.php?nb=${quantite}&idGame=${idGame}&idPlatform=${idPlatform}`)
-                                    .then((data) => console.log(data))
+                                loadRemoteJson(`./ajax/getJsonProducts.php?call=decreaseStock&nb=${quantite}&idGame=${idGame}&idPlatform=${idPlatform}`)
+                                    .then((data) => {
+                                        console.log(data)
+                                        if(data.success != null)
+                                        {
+                                            document.location.reload()
+                                        }
+                                    })
+                                
                             }
+
+
                         }
                     </script>
                 </main>

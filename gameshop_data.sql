@@ -1,9 +1,10 @@
 INSERT INTO Platform (idPlatform, namePlatform) VALUES (0,'Playstation');
 INSERT INTO Platform (idPlatform, namePlatform) VALUES (1,'Xbox');
 INSERT INTO Platform (idPlatform, namePlatform) VALUES (2,'PC');
-INSERT INTO User (username, pass) VALUES ('nomUtilisateur','$2y$10$OsCALpSrG72v3W74nAYT6.GUAOvX8eEiyiFQLvUZup561qUYtpwUK');
-INSERT INTO User (username, pass) VALUES ('nomUtilisateur2','$2y$10$yFgHkW.3KD2AF5SoF.1jkemULhADxEDxurUlbLs896cZRZTPgZC0. ');
-INSERT INTO User (username, pass) VALUES ('nomUtilisateur3','$2y$10$wzhS4rj9olbhTMu4gaU/TO4tngyhNizJIoJLNWvNEMiMhl0i9wCVC');
+INSERT INTO User (username, pass, roleUser) VALUES ('admin','$2y$10$fW6gRHVu1L///UhHs0lGXe9uIHtHFAADntGO0kgU0HVa11hLDKSOG','admin');
+INSERT INTO User (username, pass, roleUser) VALUES ('nomUtilisateur','$2y$10$OsCALpSrG72v3W74nAYT6.GUAOvX8eEiyiFQLvUZup561qUYtpwUK','user');
+INSERT INTO User (username, pass, roleUser) VALUES ('nomUtilisateur2','$2y$10$yFgHkW.3KD2AF5SoF.1jkemULhADxEDxurUlbLs896cZRZTPgZC0. ','user');
+INSERT INTO User (username, pass, roleUser) VALUES ('nomUtilisateur3','$2y$10$wzhS4rj9olbhTMu4gaU/TO4tngyhNizJIoJLNWvNEMiMhl0i9wCVC','user');
 INSERT INTO Game (idGame, nameGame) VALUES (1,"Assassin's Creed : Valhalla");
 INSERT INTO IsInPlatform (idGame, idPlatform, price, stock, imageURL) VALUES (1,0,40,45,"img/playstation/acValhalla.jpg");
 INSERT INTO Game (idGame, nameGame) VALUES (2,"Call of Duty : Cold War");

@@ -1,25 +1,26 @@
 <?php
-    require_once("php/varSession.inc.php");
+    $json = json_decode(file_get_contents("informations.json"), true);
+    $users = json_decode(file_get_contents("users.json"), true);
 
     $fp = fopen('gameshop_data.sql', 'w');
 
     //INSERT Platform
-    foreach ($_SESSION['categories'] as $key => $platform) {
+    foreach ($json["categories"] as $key => $platform) {
         //$requete = 'INSERT INTO Platform (idPlatform, namePlatform) VALUES (?,?)';
         $requete = "INSERT INTO Platform (idPlatform, namePlatform) VALUES ($key,'".$platform."');\n";
         $test = fwrite($fp, $requete);
     }
 
     //INSERT User
-    foreach ($_SESSION['users'] as $user) {
-        $requete = "INSERT INTO User (username, pass) VALUES ('".$user["login"]."','".$user["password"]."');\n";
+    foreach ($users["users"] as $user) {
+        $requete = "INSERT INTO User (username, pass, roleUser) VALUES ('".$user["login"]."','".$user["password"]."','".$user["role"]."');\n";
         $test = fwrite($fp, $requete);
     }
     
     $tabGameName = array();    
     $idGame = 1;
     //INSERT Game Playsation
-    foreach ($_SESSION['Playstation'] as $key => $gamePlaystation) {
+    foreach ($json["jeux"]["Playstation"] as $key => $gamePlaystation) {
         
         if(!in_array($gamePlaystation["nom"], array_keys($tabGameName)))
         {
@@ -34,7 +35,7 @@
     }
 
     //INSERT Game Xbox
-    foreach ($_SESSION['Xbox'] as $gameXbox) {
+    foreach ($json["jeux"]["Xbox"] as $gameXbox) {
 
         if(!in_array($gameXbox["nom"], array_keys($tabGameName)))
         {
@@ -50,7 +51,7 @@
     }
 
     //INSERT Game PC
-    foreach ($_SESSION['PC'] as $gamePC) {
+    foreach ($json["jeux"]["PC"] as $gamePC) {
 
         if(!in_array($gamePC["nom"], array_keys($tabGameName)))
         {

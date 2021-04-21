@@ -6,7 +6,8 @@
     header('Content-Type: application/json');
     if(!empty($_SESSION["username"]))
     {
-        if( (htmlspecialchars($_GET["nb"]) != null) && (htmlspecialchars($_GET["idGame"]) != null) && (htmlspecialchars($_GET["idPlatform"])  != null) )
+        //Decrease le stock d'un jeu d'un certain nombre
+        if( (htmlspecialchars($_GET["call"]) == "decreaseStock" && htmlspecialchars($_GET["nb"]) != null) && (htmlspecialchars($_GET["idGame"]) != null) && (htmlspecialchars($_GET["idPlatform"])  != null) )
         {
             error_log("PAGE LOAD");
             connexionBDD();
@@ -16,6 +17,11 @@
                 echo json_encode(array("success" => $result["success"]));
             else
                 echo json_encode(array("error" => $result["error"]));
+            $_SESSION["basket"] = Array();
+        }
+        else if(htmlspecialchars($_GET["call"]) == "getGames" && htmlspecialchars($_GET["idPlatform"]) != null)
+        {
+            //get games d'une plateforme (va nous servir à récup le stock de chaque jeux en JS)
         }
         else
         {
