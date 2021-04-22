@@ -14,14 +14,31 @@
             $result = decreaseStock(htmlspecialchars($_GET["nb"]),htmlspecialchars($_GET["idGame"]),htmlspecialchars($_GET["idPlatform"]));
             deconnexionBDD();
             if(empty($result["error"]))
+            {
                 echo json_encode(array("success" => $result["success"]));
+                $_SESSION["basket"] = Array();
+            }
             else
+            {
                 echo json_encode(array("error" => $result["error"]));
-            $_SESSION["basket"] = Array();
+            }
         }
-        else if(htmlspecialchars($_GET["call"]) == "getGames" && htmlspecialchars($_GET["idPlatform"]) != null)
+        else if(htmlspecialchars($_GET["call"]) == "getGames" && htmlspecialchars($_GET["platform"]) != null)
         {
             //get games d'une plateforme (va nous servir à récup le stock de chaque jeux en JS)
+            error_log("PAGE LOAD");
+            connexionBDD();
+            $result = getGames(htmlspecialchars($_GET["platform"]));
+            deconnexionBDD();
+            if(empty($result["error"]))
+            {
+                echo json_encode(array($result));
+                $_SESSION["basket"] = Array();
+            }
+            else
+            {
+                echo json_encode(array("error" => $result["error"]));
+            }
         }
         else
         {
