@@ -1,3 +1,7 @@
+
+import { loadRemoteJson } from "../ajax/remoteJSONContent.js"   
+window.loadRemoteJson = loadRemoteJson; //Stack overflow 
+
 document.addEventListener("DOMContentLoaded", (e) => {
 
     //Boutons de stock
@@ -12,6 +16,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
             button.parentElement.querySelector("#stock-text").style.visibility = "hidden"
         }
     }))
+                    
+    
+
+    ///TEST APPEL AJAX 
+
+    loadRemoteJson(`./ajax/getJsonProducts.php?call=getGames&platform=Playstation`)
+        .then((data) => {
+            console.log(data)
+        })
+    // ------------------
 
     //Choix du nombre a ajouter au panier
     let incrementers = document.querySelectorAll("#increment")

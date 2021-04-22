@@ -30,15 +30,7 @@
             connexionBDD();
             $result = getGames(htmlspecialchars($_GET["platform"]));
             deconnexionBDD();
-            if(empty($result["error"]))
-            {
-                echo json_encode(array($result));
-                $_SESSION["basket"] = Array();
-            }
-            else
-            {
-                echo json_encode(array("error" => $result["error"]));
-            }
+            echo json_encode($result);
         }
         else
         {
