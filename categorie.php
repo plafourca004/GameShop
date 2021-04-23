@@ -91,7 +91,7 @@ require_once("php/bdd.php");
                                             <img src="<?= $jeu['imageURL'] ?>" class="card-img-top imgS" alt="<?= $jeu["nameGame"]?>" id="jpc5">
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title"><?= $jeu["nameGame"] ?></h5>
+                                            <h5 class="card-title gameName" id="<?= $jeu["idGame"] ?>"><?= $jeu["nameGame"] ?></h5>
                                             <p class="card-text"><?= $jeu["price"] ?>€</p>
                                             <?php
                                                 if ($_SESSION["user"]["role"] == "admin") {

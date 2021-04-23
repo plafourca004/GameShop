@@ -4,23 +4,18 @@ window.loadRemoteJson = loadRemoteJson; //Stack overflow
 
 document.addEventListener("DOMContentLoaded", (e) => {
 
-    ///TEST APPEL AJAX 
 
-    /*  loadRemoteJson(`./ajax/getJsonProducts.php?call=getGames&platform=Playstation`)
-        .then((data) => {
-            console.log(data)
-        })*/
-    // ------------------
+    const urlParams = new URLSearchParams(window.location.search)
+    const platformName = urlParams.get('cat')
+
 
     //Récupération des jeux en fonction de la plateforme
-    let platform = "PC"
-    let xhttp;
-    xhttp = new XMLHttpRequest();
+    let tabGames = []
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let response = JSON.parse(this.responseText)
             if (response["error"] == null) {
-                let tabGames = []
                 for (let index = 0; index < response['games'].length; index++) {
                     tabGames.push(response['games'][index])
                 }
@@ -32,7 +27,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
             
         }
     };
-    xhttp.open("GET", `./ajax/getJsonProducts.php?call=getGames&platform=${platform}`, true);
+    xhttp.open("GET", `./ajax/getJsonProducts.php?call=getGames&platform=${platformName}`, true);
     xhttp.send();
 
 
@@ -48,8 +43,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
             button.parentElement.querySelector("#stock-text").style.visibility = "hidden"
         }
     }))
-                    
-    
 
     
 
@@ -59,15 +52,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     incrementers.forEach(button => button.addEventListener('click', (event) => {
 
-        max = button.parentElement.querySelector("#stock-number")
-        current = button.parentElement.querySelector("#number-chosen")
-        nbInput = button.parentElement.parentElement.querySelector(".inputNb");
-        relativeDecrementer = button.parentElement.querySelector('#decrement')
+        const idJeu = button.parentElement.querySelector(".gameName").id;
+        let stock = tabGames.filter(g => g.idGame === idJeu)[0].stock;
+
+        let current = button.parentElement.querySelector("#number-chosen")
+        let nbInput = button.parentElement.parentElement.querySelector(".inputNb");
+        let relativeDecrementer = button.parentElement.querySelector('#decrement')
         relativeDecrementer.disabled = false
-        if (parseInt(current.innerHTML) < parseInt(max.innerHTML)) {
+        if (parseInt(current.innerHTML) < parseInt(stock)) {
             current.innerHTML++
             nbInput.value = current.innerHTML;
-            if(parseInt(current.innerHTML) == parseInt(max.innerHTML))
+            if(parseInt(current.innerHTML) == parseInt(stock))
             {
                 relativeDecrementer.disabled = false
                 button.disabled = true
@@ -76,10 +71,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }))
 
     decrementers.forEach(button => button.addEventListener('click', (event) => {
-
-        current = button.parentElement.querySelector("#number-chosen")
-        nbInput = button.parentElement.parentElement.querySelector(".inputNb");
-        relativeIncrementer = button.parentElement.querySelector('#increment')
+        
+        let current = button.parentElement.querySelector("#number-chosen")
+        let nbInput = button.parentElement.parentElement.querySelector(".inputNb");
+        let relativeIncrementer = button.parentElement.querySelector('#increment')
         relativeIncrementer.disabled = false
         if (current.innerHTML > 1) {
             current.innerHTML--
