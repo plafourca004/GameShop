@@ -115,7 +115,7 @@ require_once("php/bdd.php");
                                                 echo '<input type="hidden" name="nb" class="inputNb" value="1" />';
                                                 ?>
                                                 
-                                                <input type="submit" class="btn <?= ($jeu["stock"] == 0)? "btn-danger" : "btn-primary" ?>" value=" <?= ($jeu["stock"] == 0)? "Rupture de stock" : "Ajouter au panier" ?>" <?= (empty($_SESSION["username"]) || $jeu["stock"] == 0) ? "disabled" : "" ?> />
+                                                <input type="submit" class="btn <?= ($jeu["stock"] == 0)? "btn-danger" : "btn-primary" ?>" value=" <?= ($jeu["stock"] == 0)? "Rupture de stock" : "Ajouter au panier" ?>" <?= (empty($_SESSION["user"]["username"]) || $jeu["stock"] == 0) ? "disabled" : "" ?> />
                                             </form>
                                             
                                         </div>

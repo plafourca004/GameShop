@@ -4,22 +4,37 @@ window.loadRemoteJson = loadRemoteJson; //Stack overflow
 
 document.addEventListener("DOMContentLoaded", (e) => {
 
+    ///TEST APPEL AJAX 
+
+    /*  loadRemoteJson(`./ajax/getJsonProducts.php?call=getGames&platform=Playstation`)
+        .then((data) => {
+            console.log(data)
+        })*/
+    // ------------------
+
     //Récupération des jeux en fonction de la plateforme
     let platform = "PC"
     let xhttp;
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            let data = JSON.parse(this.responseText)
-            let tabGames = []
-            for (let index = 0; index < data['games'].length; index++) {
-                tabGames.push(data['games'][index])
+            let response = JSON.parse(this.responseText)
+            if (response["error"] == null) {
+                let tabGames = []
+                for (let index = 0; index < response['games'].length; index++) {
+                    tabGames.push(response['games'][index])
+                }
+                console.log(tabGames)
+            } 
+            else {
+                console.log(response["error"])
             }
-            //console.log(tabGames)
+            
         }
     };
-    xhttp.open("GET", `./ajax/getJsonProducts.php?call=getGames&idPlatform=${platform}`, true);
+    xhttp.open("GET", `./ajax/getJsonProducts.php?call=getGames&platform=${platform}`, true);
     xhttp.send();
+
 
     //Boutons de stock
     let stockButtons = document.querySelectorAll("#stock")
@@ -36,13 +51,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
                     
     
 
-    ///TEST APPEL AJAX 
-
-    loadRemoteJson(`./ajax/getJsonProducts.php?call=getGames&platform=Playstation`)
-        .then((data) => {
-            console.log(data)
-        })
-    // ------------------
+    
 
     //Choix du nombre a ajouter au panier
     let incrementers = document.querySelectorAll("#increment")

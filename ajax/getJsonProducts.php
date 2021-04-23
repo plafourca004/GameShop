@@ -30,7 +30,12 @@
             connexionBDD();
             $result = getGames(htmlspecialchars($_GET["platform"]));
             deconnexionBDD();
-            echo json_encode($result);
+            if ($result != null) {
+                echo json_encode(array("success" => $result["success"], "games" => $result));
+            }
+            else {
+                echo json_encode(array("error" => "Erreur lors de la récupération des jeux"));
+            }
         }
         else
         {

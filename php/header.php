@@ -47,7 +47,7 @@
                             if($_SESSION["logged_in"])
                             {
                                 echo '<li class="nav-item">';
-                                echo '<a class="nav-link">'.$_SESSION["username"].'</a>';
+                                echo '<a class="nav-link">'.$_SESSION["user"]["username"].'</a>';
                                 echo '</li>';
                             }
                         ?>

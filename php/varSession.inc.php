@@ -18,7 +18,7 @@ $_SESSION["users"] = $users["users"];
 */
 $_SESSION["logged_in"];
 
-$_SESSION["username"];
+//$_SESSION["username"];
 
 $_SESSION["user"];
 
