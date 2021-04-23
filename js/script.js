@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
                 for (let index = 0; index < response['games'].length; index++) {
                     tabGames.push(response['games'][index])
                 }
-                console.log(tabGames)
             } 
             else {
                 console.log(response["error"])

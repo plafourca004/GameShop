@@ -24,28 +24,35 @@ require_once("php/bdd.php");
 
             if(isset($_POST["nameGame"]))
             {
-                $index = -1;
-                if (!empty($_SESSION['basket'])) {
-                    foreach($_SESSION["basket"] as $key => $jeu)
-                    {
-                        if($jeu["nameGame"] == $_POST["nameGame"] && $jeu["namePlatform"] == $_POST["namePlatform"])
+                if($_POST["stock"] >= $_POST["nb"] && $_POST["stock"] > 0)
+                {
+                    $index = -1;
+                    if (!empty($_SESSION['basket'])) {
+                        foreach($_SESSION["basket"] as $key => $jeu)
                         {
-                            $index = $key;
-                            break;
-                        } 
+                            if($jeu["nameGame"] == $_POST["nameGame"] && $jeu["namePlatform"] == $_POST["namePlatform"])
+                            {
+                                $index = $key;
+                                break;
+                            } 
+                        }
+                        if($index == -1) //Quand le jeu n'est pas déjà dans le panier -> On ajoute le jeu dans le panier
+                        {
+                            array_push($_SESSION["basket"], $_POST);
+                        }
+                        else //Quand le jeu est déjà dans le panier -> On met à jour le jeu dans le panier
+                        {
+                            $_SESSION["basket"][$index]["nb"] += $_POST["nb"];
+                            if($_SESSION["basket"][$index]["nb"] > $_POST['stock'])
+                                $_SESSION["basket"][$index]["nb"] = $_POST['stock'];
+                        }
+                       
                     }
-                    if($index == -1)
-                    {
+                    else {
+                        $_SESSION["basket"] = Array();
                         array_push($_SESSION["basket"], $_POST);
                     }
-                    else
-                    {
-                        $_SESSION["basket"][$index]["nb"] += $_POST["nb"];
-                    }
-                }
-                else {
-                    $_SESSION["basket"] = Array();
-                    array_push($_SESSION["basket"], $_POST);
+
                 }
                 
             }
