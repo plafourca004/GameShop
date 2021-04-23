@@ -96,7 +96,7 @@ require_once("php/bdd.php");
                                             <?php
                                                 if ($_SESSION["user"]["role"] == "admin") {
                                                     echo "<button type='button' class='card-btn btn btn-secondary' id='stock'>Montrer le Stock</button>";
-                                                    echo " <span id='stock-text' style='visibility:hidden'><span id='stock-number'>" .$jeu['stock']. "</span> en stock</span>";
+                                                    echo " <span id='stock-text' style='visibility:hidden'>" .$jeu['stock']. " en stock</span>";
                                                 } 
                                             ?>
                                             </br>
