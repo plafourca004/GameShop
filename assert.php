@@ -6,7 +6,6 @@
 
     //INSERT Platform
     foreach ($json["categories"] as $key => $platform) {
-        //$requete = 'INSERT INTO Platform (idPlatform, namePlatform) VALUES (?,?)';
         $requete = "INSERT INTO Platform (idPlatform, namePlatform) VALUES ($key,'".$platform."');\n";
         $test = fwrite($fp, $requete);
     }

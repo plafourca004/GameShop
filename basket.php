@@ -117,27 +117,12 @@ session_start();
                     
                     </tfoot>
                     </table>
-
-                    <!-- /////////////// -->
-
-                    <?
-
-                        //TODO:
-                        // Eviter stock negatif   C'EST FAIT !!! 
-                        // Supprimer contenu du basket apres avoir commandé 
-                        // Ajout des moyens de paiement
-                        //      Le reste des trucs optionnels sur le rendu qui rapportent des points $$$$
-                        
-                    ?>
-
-                    <!-- /////////////// -->
-                    
                     
                     <button class="btn btn-warning" <?= (empty($_SESSION['basket'])) ? 'hidden="hidden"' : "" ?> onclick="commander()">Commander</button>
                     
                     <script type="module">
                         import { loadRemoteJson } from "./ajax/remoteJSONContent.js"   
-                        window.loadRemoteJson = loadRemoteJson; //Stack overflow
+                        window.loadRemoteJson = loadRemoteJson; 
                     </script>    
                     <script>
 

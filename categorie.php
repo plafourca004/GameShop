@@ -22,7 +22,7 @@ require_once("php/bdd.php");
             
             require("php/varSession.inc.php");
 
-            if(isset($_POST["nameGame"]))
+            if(isset($_POST["nameGame"]) && !empty($_SESSION["logged_in"]))
             {
                 if($_POST["stock"] >= $_POST["nb"] && $_POST["stock"] > 0)
                 {

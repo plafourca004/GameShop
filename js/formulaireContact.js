@@ -3,11 +3,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     let contactButton = document.querySelector("#btnContact")
     let formulaire = document.getElementById("contact")
 
-    //On désactive le submit automatique lors du cliquage sur le bouton pour s'en occuper nous même
-    //formulaire.addEventListener('submit', (event) => {
-    //    event.preventDefault();
-    //});
-
 
     let tabNomElements = new Array("nom", "prenom", /*"genre",*/ "mail", "metier", "dateNaiss", "sujet", "message")
     let tabElements = new Array()

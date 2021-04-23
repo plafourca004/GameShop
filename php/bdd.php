@@ -16,11 +16,6 @@
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
-        /*
-        echo 'Connexion réussie ';
-        echo '</br>';
-        echo '</br>';
-        */
     }
 
     function deconnexionBDD() {

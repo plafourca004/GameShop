@@ -4,7 +4,6 @@
     require_once("php/varSession.inc.php");
 
     if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
-        //echo'<script>window.location = "index.php"</script>';
         header("location: index.php");
         exit;
     }
