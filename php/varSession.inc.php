@@ -20,6 +20,8 @@ $_SESSION["logged_in"];
 
 $_SESSION["username"];
 
+$_SESSION["user"];
+
 $_SESSION["basket"];
 
 ?>

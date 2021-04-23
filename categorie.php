@@ -93,7 +93,12 @@ require_once("php/bdd.php");
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $jeu["nameGame"] ?></h5>
                                             <p class="card-text"><?= $jeu["price"] ?>€</p>
-                                            <button type="button" class="card-btn btn btn-secondary" id="stock">Montrer le Stock</button> <span id="stock-text" style="visibility:hidden"><span id="stock-number"><?= $jeu["stock"] ?></span> en stock</span>         
+                                            <?php
+                                                if ($_SESSION["user"]["role"] == "admin") {
+                                                    echo "<button type='button' class='card-btn btn btn-secondary' id='stock'>Montrer le Stock</button>";
+                                                    echo " <span id='stock-text' style='visibility:hidden'><span id='stock-number'>" .$jeu['stock']. "</span> en stock</span>";
+                                                } 
+                                            ?>
                                             </br>
                                             <button type="button" class="card-btn btn btn-primary" id="decrement" disabled="true">-</button>
                                             <span id="number-chosen"><?= ($jeu["stock"] == 0) ? 0 : 1 ?></span>

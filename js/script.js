@@ -4,6 +4,23 @@ window.loadRemoteJson = loadRemoteJson; //Stack overflow
 
 document.addEventListener("DOMContentLoaded", (e) => {
 
+    //Récupération des jeux en fonction de la plateforme
+    let platform = "PC"
+    let xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let data = JSON.parse(this.responseText)
+            let tabGames = []
+            for (let index = 0; index < data['games'].length; index++) {
+                tabGames.push(data['games'][index])
+            }
+            //console.log(tabGames)
+        }
+    };
+    xhttp.open("GET", `./ajax/getJsonProducts.php?call=getGames&idPlatform=${platform}`, true);
+    xhttp.send();
+
     //Boutons de stock
     let stockButtons = document.querySelectorAll("#stock")
     stockButtons.forEach(button => button.addEventListener('click', (event) => {

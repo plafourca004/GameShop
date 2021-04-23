@@ -28,6 +28,7 @@
                     $erreurForm = false;
                     $_SESSION["logged_in"] = true;
                     $_SESSION["username"] = $username;
+                    $_SESSION["user"] = $user;
                     header("location: index.php");
                     exit;
                 }
