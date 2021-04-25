@@ -19,14 +19,16 @@ session_start();
 <body>
     <div class="container-fluid p-0">
 
-        <!-- Header -->
+        <!-- Header && PHP -->
         <?php
 
+            //Suppression d'un jeu en totalité
             if(isset($_POST["nbADelete"]))
             {
                 array_splice($_SESSION["basket"], $_POST["nbADelete"], 1);
             }
 
+            //Suppression de tous le panier
             if(isset($_POST["deleteBasket"]))
             {
                 $_SESSION["basket"] = Array();
@@ -53,6 +55,7 @@ session_start();
                     </thead>
                     <tbody>
                     <?php
+                        //Affichage des jeux que l'utilisateur a ajouté dans le panier
                         if (!empty($_SESSION['basket'])) {
                             
                             foreach($_SESSION['basket'] as $key => $jeu)
@@ -92,6 +95,7 @@ session_start();
                         <td></td>
                         <td style="vertical-align: middle; font-weight: bold;">
                             <?php
+                                //Calcul du prix total de tous les jeux du panier
                                 $total = 0;
                                 foreach($_SESSION['basket'] as $jeu)
                                 {
@@ -125,7 +129,7 @@ session_start();
                         window.loadRemoteJson = loadRemoteJson; 
                     </script>    
                     <script>
-
+                        //Function pour commander qui va appeler du PHP qui va lui a son tour supprimer les éléments contenu dans le panier en BDD
                         function commander()
                         {
                             const jeux = document.querySelector("tbody").children
@@ -134,6 +138,7 @@ session_start();
                                 const quantite = jeux[i].children[4].innerHTML
                                 const idGame = jeux[i].children[1].id
                                 const idPlatform = jeux[i].children[2].id
+                                //Appel Ajax
                                 loadRemoteJson(`./ajax/getJsonProducts.php?call=decreaseStock&nb=${quantite}&idGame=${idGame}&idPlatform=${idPlatform}`)
                                     .then((data) => {
                                         console.log(data)
@@ -142,10 +147,7 @@ session_start();
                                             document.location.reload()
                                         }
                                     })
-                                
                             }
-
-
                         }
                     </script>
                 </main>

@@ -37,16 +37,13 @@ session_start();
 
                     $errorList = array();
                     if(isset($_POST["btnContact"]))
-                    {
-                        //print_r($_POST);
-                        
+                    {                        
                         $allFormInputs = array("nom","prenom","genre","mail","metier","dateNaiss","sujet","message","btnContact");
 
                         $isFormValid = true;
 
-                        //inputsNonRemplis = tableauComposéDesValeursDifferentesEntre($allFormInputs, TableauComposeDesClefsDe(TableauSansLesValeursNulles($_POST)))
-                        $inputsNonRemplis = array_diff($allFormInputs,array_keys(array_filter($_POST)));
-                        //array filter enleve les valeurs vides
+                        $inputsNonRemplis = array_diff($allFormInputs,array_keys(array_filter($_POST))); //array filter enleve les valeurs vides
+                        
                         if(count($inputsNonRemplis) != 0)
                         {
                             $isFormValid = false;
@@ -68,13 +65,9 @@ session_start();
                             array_push($errorList, "mail");
                         }
 
-                        //echo'<script>console.log("'.implode("|", $errorList).'")</script>';
-
                         if($isFormValid)
                         {
 
-                            //Envoie du mail
-                            
                             require_once 'vendor/autoload.php';
                             
                             $subject = "Nouveau contact au sujet de ".$_POST["sujet"];
@@ -208,9 +201,6 @@ session_start();
                         </div>
                         <br />
                     </form>
-
-                    
-
                 </main>
             </div>  
         </div>

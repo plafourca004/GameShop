@@ -22,6 +22,9 @@ require_once("php/bdd.php");
             
             require("php/varSession.inc.php");
 
+            //Traitement d'un ajout au panier 
+            // (si on ajoute deux fois le même jeu, on additionne ce qu'il y a déjà dans le panier et ce qu'on ajoute)
+            // (si on ajoute plus qu'il n'y en a dans le stock, on ajoute la valeur du stock)
             if(isset($_POST["nameGame"]) && !empty($_SESSION["logged_in"]))
             {
                 if($_POST["stock"] >= $_POST["nb"] && $_POST["stock"] > 0)
@@ -46,15 +49,12 @@ require_once("php/bdd.php");
                             if($_SESSION["basket"][$index]["nb"] > $_POST['stock'])
                                 $_SESSION["basket"][$index]["nb"] = $_POST['stock'];
                         }
-                       
                     }
                     else {
                         $_SESSION["basket"] = Array();
                         array_push($_SESSION["basket"], $_POST);
                     }
-
                 }
-                
             }
 
             include("php/header.php");
@@ -73,11 +73,10 @@ require_once("php/bdd.php");
 
                             $category = htmlspecialchars($_GET['cat']);
 
-                            //Appel en db
                             connexionBDD();
                             $plateformes = getPlatforms();
                             $plateformExists = false;
-                            //$category in array
+                            // savoir si $category existe en BDD ou non
                             foreach($plateformes as $plateforme)
                             {
                                 if($plateforme["namePlatform"] == $category)
@@ -139,8 +138,6 @@ require_once("php/bdd.php");
                             }
                             deconnexionBDD();
                             ?>
-
-
                         </div>
                     </div>
                 </main>

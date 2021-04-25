@@ -4,17 +4,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
     let formulaire = document.getElementById("contact")
 
 
-    let tabNomElements = new Array("nom", "prenom", /*"genre",*/ "mail", "metier", "dateNaiss", "sujet", "message")
+    let tabNomElements = new Array("nom", "prenom", "mail", "metier", "dateNaiss", "sujet", "message")
     let tabElements = new Array()
     for (let index = 0; index < tabNomElements.length; index++) {
 
         tabElements.push(formulaire.elements[tabNomElements[index]])
     }
 
-    const tabTexteMissing = new Array("Veuillez mettre un nom", "Veuillez mettre un prenom", /*"Veuillez choisir un genre",*/ "Veuillez mettre une adresse mail", "Veuillez choisir un métier", "Veuillez mettre une une date de naissance", "Veuillez mettre un sujet", "Veuillez mettre un message")
-    const tabRegex = new Array(/[A-Za-z]/, /[A-Za-z]/, /*"",*/ /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
-    const tabLabelError = new Array("labelNom", "labelPrenom", /*"labelGenre",*/ "labelMail", "labelMetier", "labelDateNaiss", "labelSujet", "labelMessage")
-    const tabExemple = new Array("Exemple : Dupont", "Exemple : Pierre", /*"",*/ "Exemple : pierre.dupont@exemple.fr", "", "Format : jj/mm/aaaa", "", "")
+    const tabTexteMissing = new Array("Veuillez mettre un nom", "Veuillez mettre un prenom", "Veuillez mettre une adresse mail", "Veuillez choisir un métier", "Veuillez mettre une une date de naissance", "Veuillez mettre un sujet", "Veuillez mettre un message")
+    const tabRegex = new Array(/[A-Za-z]/, /[A-Za-z]/, /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+    const tabLabelError = new Array("labelNom", "labelPrenom", "labelMail", "labelMetier", "labelDateNaiss", "labelSujet", "labelMessage")
+    const tabExemple = new Array("Exemple : Dupont", "Exemple : Pierre", "Exemple : pierre.dupont@exemple.fr", "", "Format : jj/mm/aaaa", "", "")
 
     const element = {
         cle: tabElements,

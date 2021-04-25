@@ -1,4 +1,7 @@
 <?php
+    //Fichier qui va permettre de créer les scripts SQL pour ajouter des données en BDD
+    //Les données sont contenus dans informations.json et users.json
+
     $json = json_decode(file_get_contents("informations.json"), true);
     $users = json_decode(file_get_contents("users.json"), true);
 
@@ -46,7 +49,6 @@
 
         $requete = "INSERT INTO IsInPlatform (idGame, idPlatform, price, stock, imageURL) VALUES (".$tabGameName[$gameXbox["nom"]].",1,".$gameXbox["prix"].",".$gameXbox["stock"].",\"".$gameXbox["imageURL"]."\");\n";
         fwrite($fp, $requete);
-
     }
 
     //INSERT Game PC
@@ -62,10 +64,7 @@
         
         $requete = "INSERT INTO IsInPlatform (idGame, idPlatform, price, stock, imageURL) VALUES (".$tabGameName[$gamePC["nom"]].",2,".$gamePC["prix"].",".$gamePC["stock"].",\"".$gamePC["imageURL"]."\");\n";
         fwrite($fp, $requete);
-
     }
-
-    
     
     fclose($fp);
 ?>

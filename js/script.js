@@ -98,6 +98,4 @@ document.addEventListener("DOMContentLoaded", (e) => {
         w.document.close()
     }))
     
-
-    
 })

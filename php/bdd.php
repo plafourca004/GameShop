@@ -1,9 +1,9 @@
 <?php
+    //Fichier qui contient toutes les fonctions PHP qui vont servir à intéragir avec la BDD
 
     require_once("bddData.php");
 
     function connexionBDD() {
-
         //On tente créer un nouvel objet PDO pour se connecter à la BDD
         try {
             $GLOBALS['BDD'] = new PDO(

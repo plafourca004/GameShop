@@ -3,6 +3,7 @@
     require_once("php/bdd.php");
     require_once("php/varSession.inc.php");
 
+    //Si déjà connecté, on renvoie vers la page d'accueil
     if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
         header("location: index.php");
         exit;
@@ -13,8 +14,6 @@
         if ( (!empty($_POST['username'])) && (!empty($_POST['password'])) ) {
             $username = trim($_POST['username']);
             $password = trim($_POST['password']);
-            
-            $users = $_SESSION["users"];
 
             connexionBDD();
             $user = getUser($username);
